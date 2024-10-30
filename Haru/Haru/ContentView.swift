@@ -7,18 +7,51 @@
 
 import SwiftUI
 
+enum Tab {
+    case first
+    case second
+    case third
+}
+
+
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            NavigationStack {
+                HomeView()
+            }
+            .tag(Tab.first)
+            .tabItem {
+                Image(systemName: "paperplane.fill")
+                Text("추억여행")
+            }
+            
+            NavigationStack {
+                LibraryView()
+            }
+            .tag(Tab.second)
+            .tabItem {
+                Image(systemName: "archivebox.fill")
+                Text("보관함")
+            }
+            
+            NavigationStack {
+                AddView()
+            }
+            .tag(Tab.third)
+            .tabItem {
+                Image(systemName: "photo.badge.plus.fill")
+                Text("사진추가")
+            }
         }
-        .padding()
+
     }
 }
 
+
 #Preview {
     ContentView()
+        .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
+    
 }
