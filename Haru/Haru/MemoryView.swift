@@ -92,7 +92,6 @@ struct MemoryView: View {
                 )
             }
         }
-        .toolbar(.hidden, for: .tabBar)
 
         .onAppear {
             loadImageAndColor()

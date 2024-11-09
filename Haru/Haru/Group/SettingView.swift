@@ -12,60 +12,61 @@ import SwiftData
 
 struct SettingView: View {
     
-    @Query var GroupList: [GroupInfo]
+    @Query var Groups: [GroupInfo]
+    @Environment(\.modelContext) var modelContext
+    @State var isSheetOpen = false
     
     
     var body: some View {
-            ScrollView{
-                VStack{
-                    NavigationLink(destination: MakeGroupView()) {
-                        Text("설정")
-                            .foregroundColor(.white)
-                            .frame(width: 337, height: 59)
-                            .background(Color.blue)
-                            .cornerRadius(20)
-                    }
-                    
-                    ForEach(GroupList, id: \.id){ GroupInfo in
-                        VStack {
-                            ZStack(alignment: .topLeading) {
-                                Rectangle()
-                                    .foregroundColor(.clear)
-                                    .frame(width: 345, height: 117)
-                                    .background(.white)
-                                    .cornerRadius(15)
-                                    .shadow(color: .black.opacity(0.07), radius: 2, x: 2, y: 2)
-                                
-                                VStack(alignment: .leading) {
-                                    Text(GroupInfo.name)
-                                        .font(.system(size: 20))
-                                        .fontWeight(.bold)
-                                    
-                                    HStack{
-                                        ForEach(GroupInfo.member, id: \.self) { member in
-                                            ZStack{
-                                                RoundedRectangle(cornerRadius: 16)
-                                                    .fill(Color.SubBackground)
-                                                    .frame(width: 50, height: 24)
-                                                Text(member)
-                                            }
-                                        }
-                                    }
-                                }
-                                .padding(20)
+        ScrollView{
+            VStack {
+                ForEach(Groups, id: \.id){ groupInfo in
+                    VStack(alignment: .leading) {
+                        HStack{
+                            Text(groupInfo.name)
+                                .font(.system(size: 20))
+                                .fontWeight(.bold)
+                            Spacer()
+                            Image(systemName: "pencil")
+                            
+                        }
+                        HStack{
+                            ForEach(groupInfo.member, id: \.self) { member in
+                                Text(member)
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 4)
+                                    .background(Color.LightPink)
+                                    .cornerRadius(10)
                             }
                         }
-                        .padding(.bottom, 20)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(16)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10) // 둥근 모서리 테두리
+                            .stroke(Color.CustomPink, lineWidth: 1) // 분홍색 테두리
+                    )
+                    .padding(.bottom, 16)
                 }
             }
-            .toolbar(.hidden, for: .tabBar)
+            .padding(16)
             
         }
+        .navigationTitle("보관함")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing:
+                                Button { isSheetOpen = true } label: {Image(systemName: "plus") .foregroundColor(Color.CustomPink)})
+        
+        .sheet(isPresented: $isSheetOpen){
+            MakeGroupView()
+        }
+        
+    }
 }
 
 #Preview {
-    SettingView()
-    //        .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
-    
+    NavigationStack{
+        SettingView()
+            .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
+    }
 }

@@ -34,7 +34,6 @@ struct PhotoInfo1View: View {
                         )
             }
         }
-        .toolbar(.hidden, for: .tabBar)
 
     }
 }

@@ -9,76 +9,87 @@ import SwiftUI
 import SwiftData
 
 struct AddInfoView: View {
-//    @Binding var stack: NavigationPath
+    //    @Binding var stack: NavigationPath
     
     //    @Binding var path: [String]
     
     @Binding var isSheetOpen: Bool
-
+    
     
     @State var ImageData: Data
     @State var date: Date = Date()
-    @State var text: String = ""
-    
-    //    @State var selectedGroup: String = ""
-    @Query var groupList: [GroupInfo]
-    
-    
-    @State private var selectedGroup: GroupInfo? // 선택된 그룹
-    @State private var selectedMember: String? // 선택된 멤버
-    
-    @State private var selectedMembers: Set<String> = [] // 선택된 멤버를 저장할 Set
-    @State private var newMemberName: String = "" // 추가할 멤버 이름
     
     
     var body: some View {
-        ScrollView{
-            VStack{
-                if let uiImage = UIImage(data: ImageData) {
-                    Image(uiImage: uiImage)
-                    
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 300)
-                }
-                DatePicker("날짜", selection: $date)
+        VStack {
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .fill(Color(red: 0.47, green: 0.47, blue: 0.5).opacity(0.16))
+                    .frame(maxWidth: .infinity, maxHeight: 4)
+                    .cornerRadius(100)
                 
+                Rectangle()
+                    .fill(Color.MainRed)
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.25, maxHeight: 4)
+                    .cornerRadius(100)
                 
-                TextEditor(text: $text)
-                    .frame(width: 337, height: 80)
-                    .cornerRadius(15)
-                    .padding()
-                    .background(.blue)
-                
-                
-                
-                NavigationLink(destination: SelectGroupView(photo: $ImageData, date: $date, text: $text, isSheetOpen: $isSheetOpen))
-                {
-                    Text("그룹 정보 입력")
-                        .foregroundColor(.white)
-                        .frame(width: 337, height: 59)
-                        .background(Color.blue)
-                        .cornerRadius(20)
-                }
-
             }
+            .padding(.vertical, 20)
+            //                .padding(.leading, 0)
+            //                .padding(.trailing, 280)
+            //                .padding(.vertical, 0)
+            //                .background(Color(red: 0.47, green: 0.47, blue: 0.5).opacity(0.16))
+            //                .padding(.horizontal, 16)
+            //                .padding(.vertical, 0)
+            //                .frame(width: 393, height: 44, alignment: .center)
+            //                .background(.white)
             
-            .padding()
+            if let uiImage = UIImage(data: ImageData) {
+                Image(uiImage: uiImage)
+                
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 200)
+                    .padding(.bottom, 40)
+            }
+            DatePicker("날짜", selection: $date, displayedComponents: [.date])
+                .datePickerStyle(.graphical)
+                .accentColor(Color.CustomPink)
+            
+            
+            
+            
+            
+            Spacer()
             
         }
-        .toolbar(.hidden, for: .tabBar)
-
-    }
-    
-}
-
-struct AddInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        let sampleImage = UIImage(named: "4cut1") // 로컬 이미지 이름으로 변경
-        let imageData = sampleImage?.pngData() ?? Data() // 이미지 데이터를 Data로 변환
+        .padding(.horizontal, 16)
+        .navigationTitle("보관함")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                NavigationLink(destination: SelectGroupView(isSheetOpen: $isSheetOpen, photo: $ImageData, date: $date)) {
+                    Text("다음")
+                        .foregroundColor(.black)
+                }
+            })
+                        })
         
-        NavigationStack {
-            AddInfoView(isSheetOpen: .constant(true), ImageData: imageData)
+            //        .navigationBarItems(trailing: )
+            
         }
-    }
-}
+                 
+                 }
+                 
+                 struct AddInfoView_Previews: PreviewProvider {
+            static var previews: some View {
+                let sampleImage = UIImage(named: "4cut1") // 로컬 이미지 이름으로 변경
+                let imageData = sampleImage?.pngData() ?? Data() // 이미지 데이터를 Data로 변환
+                
+                NavigationStack {
+                    AddInfoView(isSheetOpen: .constant(true), ImageData: imageData)
+                        .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
+                    
+                }
+            }
+        }

@@ -9,126 +9,154 @@ import SwiftUI
 import SwiftData
 
 struct SelectGroupView: View {
-    
-    @Binding var photo: Data
-    @Binding var date: Date
-    @Binding var text: String
     @Binding var isSheetOpen: Bool
 
+    @Binding var photo: Data
+    @Binding var date: Date
+    
     
     
     
     //    @State var selectedGroup: String = ""
     @Query var groupList: [GroupInfo]
-    
+    @Environment(\.modelContext) var modelContext
+
     
     @State private var selectedGroup: GroupInfo? // 선택된 그룹
     
-    @State private var groupMember: [String] = []
-    
-    
-    @State private var selectedMember: String? // 선택된 멤버
-    
-    @State private var selectedMembers: Set<String> = [] // 선택된 멤버를 저장할 Set
+    @State private var groupName: String = "" // 그룹 이름 복사
+    @State private var groupMember: [String] = [] // 그룹 멤버 복사
+
     @State private var newMemberName: String = "" // 추가할 멤버 이름
     
-    @Environment(\.modelContext) var modelContext
+    
+    
     
     
     var body: some View {
         VStack{
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .fill(Color(red: 0.47, green: 0.47, blue: 0.5).opacity(0.16))
+                    .frame(maxWidth: .infinity, maxHeight: 4)
+                    .cornerRadius(100)
+                
+                Rectangle()
+                    .fill(Color.MainRed)
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.5, maxHeight: 4)
+                    .cornerRadius(100)
+                
+            }
+            .padding(.vertical, 20)
+            
             if let uiImage = UIImage(data: photo) {
                 Image(uiImage: uiImage)
                 
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 150)
+                    .frame(height: 200)
+                    .padding(.bottom, 40)
+
+                
             }
+            
+            
+            Text("누구랑 찍었나요?")
+            
+            VStack(spacing: 16) {
             Picker("Select a group", selection: $selectedGroup) {
                 ForEach(groupList, id: \.self) { group in
                     Text(group.name).tag(group as GroupInfo?) // 그룹 객체를 태그로 사용
                 }
             }
+            .accentColor(.black)
+            
+            .pickerStyle(MenuPickerStyle())
             .onChange(of: selectedGroup){
+                groupName = selectedGroup!.name
                 groupMember = selectedGroup!.member
             }
-            .pickerStyle(MenuPickerStyle())
-            .padding()
+            .frame(maxWidth: .infinity, maxHeight: 44)
+            .padding(.horizontal, 16)
+            .background(Color.LightPink)
+            .cornerRadius(10)
             
             
-            //             두 번째 Picker: 선택된 그룹의 멤버 선택
             if let selectedGroup = selectedGroup {
-                //                Picker("Select a member", selection: $selectedMember) {
-                //                    ForEach(groupMember, id: \.self) { member in
-                //                        Text(member)
-                //                    }
-                //                }
-                //                .pickerStyle(MenuPickerStyle())
-                //                .padding()
-                //
-                //                Text("hello")
-                
-                // 멤버 선택 리스트
-                List(groupMember, id: \.self) { member in
-                    HStack {
-                        Text(member)
-                        if selectedMembers.contains(member) {
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.blue)
-                        }
-                    }
-                    .contentShape(Rectangle()) // 터치 영역 확장
-                    .onTapGesture {
-                        if selectedMembers.contains(member) {
-                            selectedMembers.remove(member) // 이미 선택된 경우 제거
-                        } else {
-                            selectedMembers.insert(member) // 선택되지 않은 경우 추가
-                        }
-                    }
-                }
-                
-                // 멤버 추가
                 HStack {
                     TextField("Add new member", text: $newMemberName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
+                        .scrollContentBackground(.hidden)
+                        .background(Color.LightPink)
+                        .frame(width: 270, height: 166)
+                    Spacer()
                     
-                    Button("Add") {
+                    Button("추가") {
                         if !newMemberName.isEmpty {
                             groupMember.append(newMemberName) // 새로운 멤버 추가
                             newMemberName = "" // 입력 필드 초기화
                         }
+                        
                     }
-                    .padding()
+                    .font(.system(size: 15))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.CustomPink)
+                    .cornerRadius(5)
                 }
+                .padding(.horizontal, 16)
+                .frame(maxWidth: .infinity, maxHeight: 44)
+                .background(Color.LightPink)
+                .cornerRadius(10)
                 
-                // 선택된 멤버 삭제
-                Button("Remove Selected Members") {
-                    groupMember.removeAll { selectedMembers.contains($0) } // 선택된 멤버 삭제
-                    selectedMembers.removeAll() // 선택 초기화
+                List {
+                    ForEach(groupMember, id: \.self) { member in
+                        HStack {
+                            Text(member)
+                            Spacer() // 오른쪽 정렬을 위해 Spacer 추가
+                            Button(action: {
+                                deleteMember(member)
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.CustomPink)
+                            }
+                        }
+                        .listRowBackground(Color.LightPink)
+                    }
+                    .onDelete(perform: delete) // 스와이프 삭제 기능
                 }
-                .padding()
-                .disabled(selectedMembers.isEmpty) // 선택된 멤버가 없을 경우 비활성화
-                
-                
-                Button {
-                    let newInfo = PhotoInfo(photo: photo, date: date, text:text, groupName: selectedGroup.name, groupMember: groupMember)
-                    modelContext.insert(newInfo)
-                    print("저장")
-                    isSheetOpen = false
-                    
-                } label: {
-                    Text("저장티비")
-                        .foregroundColor(.white)
-                        .frame(width: 337, height: 59)
-                        .background(Color.blue)
-                        .cornerRadius(20)                }
-                
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .frame(maxWidth: .infinity, maxHeight: 180)
+                .cornerRadius(10)
             }
+            }
+            Spacer()
             
         }
-        .toolbar(.hidden, for: .tabBar)
-
+        .padding(.horizontal, 16)
+        
+        
+        
+        .navigationTitle("보관함")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: NavigationLink(destination: AddImageTextView(isSheetOpen: $isSheetOpen, photo: $photo, date: $date, groupName: $groupName, groupMember: $groupMember)) {
+            Text("다음")
+                .foregroundColor(.black)
+        })
+        
+        
+        
+    }
+    
+    private func deleteMember(_ member: String) {
+        if let index = groupMember.firstIndex(of: member) {
+            groupMember.remove(at: index)
+        }
+    }
+    
+    private func delete(at offsets: IndexSet) {
+        groupMember.remove(atOffsets: offsets)
     }
 }
 
@@ -140,7 +168,7 @@ struct SelectGroupView_Previews: PreviewProvider {
         let imageData = sampleImage?.pngData() ?? Data() // 이미지 데이터를 Data로 변환
         
         NavigationStack {
-            SelectGroupView(photo: .constant(imageData), date: .constant(Date()), text: .constant("Hello"), isSheetOpen: .constant(true))
+            SelectGroupView(isSheetOpen: .constant(true), photo: .constant(imageData), date: .constant(Date()))
                 .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
         }
     }

@@ -15,15 +15,14 @@ import SwiftData
 
 //struct MemoryView: View {
 struct Memory1View: View {
-    
-    //    @Binding var stack: NavigationPath
     @Binding var photoInfo: PhotoInfo
     
-    @State private var selectedImage: UIImage?
     @State private var backgroundColor: Color = .white
-    @State private var isSwiped = false
-    @State private var imageOffset: CGFloat = 0
-    private let maxSwipeUp: CGFloat = -80
+    
+    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.72
+    @State private var currentDragOffsetY: CGFloat = 0
+    @State private var endingOffsetY: CGFloat = 0
+    
     
     var body: some View {
         VStack {
@@ -33,62 +32,62 @@ struct Memory1View: View {
                         .fill(backgroundColor)
                         .edgesIgnoringSafeArea(.all)
                     
-                    VStack {
+                    ZStack {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 550)
-                            .offset(y: imageOffset)
                         
-                        if isSwiped {
-                            VStack {
-                                Text("Date: \(photoInfo.date.formatted())")
-                                Text("Text: \(photoInfo.text)")
-                                Text("Group: \(photoInfo.groupName)")
-                                
-                            }
-                            .padding()
-                            .background(Color.white.opacity(0.8))
+                        MemoryInfoView(photoInfo: $photoInfo)
+                        //                            MemoryInfoView()
                             .cornerRadius(10)
-                            .padding()
-                        }
+                            .offset(y: startingOffsetY)
+                            .offset(y: currentDragOffsetY)
+                            .offset(y: endingOffsetY)
+                            .gesture(
+                                DragGesture()
+                                    .onChanged({ value in
+                                        withAnimation(.spring()) {
+                                            currentDragOffsetY = value.translation.height
+                                        }
+                                    })
+                                    .onEnded({ value in
+                                        withAnimation(.spring()) {
+                                            if currentDragOffsetY < -150 {
+                                                endingOffsetY = -UIScreen.main.bounds.height * 0.3 // 절반 올라오게 설정
+                                                currentDragOffsetY = .zero
+                                            } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
+                                                endingOffsetY = 0 // 원래 위치로 돌아가기
+                                                currentDragOffsetY = .zero
+                                            } else {
+                                                currentDragOffsetY = .zero
+                                            }
+                                        }
+                                    })
+                            )
                     }
                 }
-                .gesture(
-                    DragGesture(minimumDistance: 10)
-                        .onChanged { value in
-                            if !isSwiped {
-                                if value.translation.height < 0 && imageOffset > maxSwipeUp {
-                                    imageOffset = value.translation.height
-                                }
-                            }
-                        }
-                        .onEnded { value in
-                            if value.translation.height < -50 {
-                                isSwiped = true
-                            } else if value.translation.height > 50 {
-                                isSwiped = false
-                            }
-                            imageOffset = 0
-                        }
-                )
+                
             }
         }
-        .toolbar(.hidden, for: .tabBar)
-        
-        .onAppear {
+        .task {
             loadImageAndColor()
-            print("초기실행")        }
+            print("변경")
+            startingOffsetY = UIScreen.main.bounds.height * 0.72
+            currentDragOffsetY = 0
+            endingOffsetY = 0
+        }
+        
         .onChange(of: photoInfo) { _ in
             loadImageAndColor()
-            print("바뀌면 실행") 
+            print("사진이 바뀌면 실행")
         }
     }
     
-    private func loadImageAndColor() {        
+    
+    func loadImageAndColor() {
         if let uiImage = UIImage(data: photoInfo.photo) {
-            selectedImage = uiImage
-            backgroundColor = extractDominantColor(from: uiImage)
+            self.backgroundColor = extractDominantColor(from: uiImage)
         }
     }
     

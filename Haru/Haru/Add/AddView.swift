@@ -21,7 +21,7 @@ struct AddView: View {
     
     @State var endDate: Date = Date()
     
-    @State var isSheetOpen = false
+    @Binding var isSheetOpen: Bool
     
     
     var body: some View {
@@ -55,7 +55,7 @@ struct AddView: View {
                 
             }
             .onAppear{
-                    ImageData = nil
+                ImageData = nil
             }
             
             if let selectedImage = ImageData, let uiImage = UIImage(data: selectedImage) {
@@ -64,24 +64,32 @@ struct AddView: View {
                     .scaledToFit()
                     .frame(height: 300)
                 
-                Button(action: {
-                    isSheetOpen = true
-                }, label: {
-                    Text("사진 등록하기")
-                        .foregroundColor(.white)
-                        .frame(width: 337, height: 59)
-                        .background(Color.blue)
-                        .cornerRadius(20)
-                })
-                
+                //                NavigationLink(destination: AddInfoView(isSheetOpen: $isSheetOpen, ImageData: ImageData!)){
+                //
+                //
+                //                    Text("사진 등록하기")
+                //                        .foregroundColor(.white)
+                //                        .frame(width: 337, height: 59)
+                //                        .background(Color.blue)
+                //                        .cornerRadius(20)
+                //                }
             }
+            
             Spacer()
         }
-        .onAppear{
-                ImageData = nil
-        }
-        .padding()
-        //        .toolbar(.hidden, for: .tabBar)
+        .navigationTitle("보관함")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+//                NavigationLink(destination: AddInfoView(isSheetOpen: $isSheetOpen, ImageData: ImageData!))
+//                {
+//                네비게이션만 달면 문제 생김 왜 그럼 제 발
+                    Text("다음")
+                        .foregroundColor(.black)
+//                }
+            })
+        })
+        
         
         .task(id: selectedItem) {
             // 선택된 아이템에서 이미지 데이터 가져오기
@@ -89,20 +97,6 @@ struct AddView: View {
                 ImageData = data
             }
         }
-        .fullScreenCover(isPresented: $isSheetOpen, content: {
-            VStack {
-                Button {
-                    isSheetOpen = false
-                } label: {
-                    Text("나가기")
-                }
-                NavigationStack {
-                    AddInfoView(isSheetOpen: $isSheetOpen, ImageData: ImageData!)
-                }
-            }
-        })
-        
-        
     }
 }
 
@@ -110,6 +104,6 @@ struct AddView: View {
 
 #Preview {
     NavigationStack{
-        AddView()
+        AddView(isSheetOpen: .constant(true))
     }
 }

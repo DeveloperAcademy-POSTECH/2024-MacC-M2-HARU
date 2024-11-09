@@ -43,11 +43,6 @@ struct HaruWidgetEntryView : View {
     var body: some View {
         VStack {
             Image("4cut1")
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
         }
     }
 }

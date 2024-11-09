@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE16EC532CDD9E9E0089F064 /* MemoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16EC522CDD9E9E0089F064 /* MemoryInfoView.swift */; };
 		DE17F51D2C9BACF800008884 /* HaruApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F51C2C9BACF800008884 /* HaruApp.swift */; };
 		DE17F51F2C9BACF800008884 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F51E2C9BACF800008884 /* ContentView.swift */; };
 		DE17F5212C9BACF800008884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE17F5202C9BACF800008884 /* Assets.xcassets */; };
@@ -27,16 +28,20 @@
 		DE47CEEC2CCB1AAB0067B02D /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47CEEB2CCB1AAB0067B02D /* AppIntent.swift */; };
 		DE47CEEE2CCB1AAC0067B02D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE47CEED2CCB1AAC0067B02D /* Assets.xcassets */; };
 		DE47CEF22CCB1AAC0067B02D /* HaruWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DE47CEDE2CCB1AAB0067B02D /* HaruWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DE5289F92CD9C7AF00E11186 /* AddImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5289F82CD9C7AF00E11186 /* AddImageTextView.swift */; };
 		DE753D002CB4CF2300F691A0 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE753CFF2CB4CF2300F691A0 /* SettingView.swift */; };
 		DE753D022CB4D2AC00F691A0 /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE753D012CB4D2AC00F691A0 /* MemoryView.swift */; };
 		DE7D81552CA100C300A470DD /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D81542CA100C300A470DD /* LibraryView.swift */; };
 		DE7D81572CA1075100A470DD /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D81562CA1075100A470DD /* SwiftUIView.swift */; };
+		DE9A402D2CDEF3AE00B101CF /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A402C2CDEF3AE00B101CF /* Notification.swift */; };
+		DE9A402F2CDEF3DB00B101CF /* notificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A402E2CDEF3DB00B101CF /* notificationView.swift */; };
 		DEA7BA132CC60D2F00618088 /* Memory1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA7BA122CC60D2F00618088 /* Memory1View.swift */; };
-		DEB693E82CC1E6BF00F7168F /* AddtestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB693E72CC1E6BF00F7168F /* AddtestView.swift */; };
 		DEB693EA2CC1F6AB00F7168F /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB693E92CC1F6AB00F7168F /* SlideView.swift */; };
-		DEC1205E2CC0A2690052E1E4 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205D2CC0A2690052E1E4 /* ColorExtension.swift */; };
+		DEC1205E2CC0A2690052E1E4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205D2CC0A2690052E1E4 /* Extension.swift */; };
 		DEC120602CC0E0450052E1E4 /* SelectGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205F2CC0E0450052E1E4 /* SelectGroupView.swift */; };
 		DED8F0F52CB8D3C000732890 /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */; };
+		DEEB11F02CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
+		DEEB11F12CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DE16EC522CDD9E9E0089F064 /* MemoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInfoView.swift; sourceTree = "<group>"; };
 		DE17F5192C9BACF800008884 /* Haru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE17F51C2C9BACF800008884 /* HaruApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaruApp.swift; sourceTree = "<group>"; };
 		DE17F51E2C9BACF800008884 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,16 +92,21 @@
 		DE47CEEB2CCB1AAB0067B02D /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		DE47CEED2CCB1AAC0067B02D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE47CEEF2CCB1AAC0067B02D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE5289F82CD9C7AF00E11186 /* AddImageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageTextView.swift; sourceTree = "<group>"; };
 		DE753CFF2CB4CF2300F691A0 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		DE753D012CB4D2AC00F691A0 /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
 		DE7D81542CA100C300A470DD /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		DE7D81562CA1075100A470DD /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		DE9A402C2CDEF3AE00B101CF /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		DE9A402E2CDEF3DB00B101CF /* notificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationView.swift; sourceTree = "<group>"; };
 		DEA7BA122CC60D2F00618088 /* Memory1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory1View.swift; sourceTree = "<group>"; };
-		DEB693E72CC1E6BF00F7168F /* AddtestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddtestView.swift; sourceTree = "<group>"; };
 		DEB693E92CC1F6AB00F7168F /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
-		DEC1205D2CC0A2690052E1E4 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		DEC1205D2CC0A2690052E1E4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DEC1205F2CC0E0450052E1E4 /* SelectGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGroupView.swift; sourceTree = "<group>"; };
 		DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
+		DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4cut1.jpg; sourceTree = "<group>"; };
+		DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Haru.entitlements; sourceTree = "<group>"; };
+		DEEB11F32CD1DDA9006BF6F0 /* HaruWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HaruWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +132,7 @@
 		DE17F5102C9BACF800008884 = {
 			isa = PBXGroup;
 			children = (
+				DEEB11F32CD1DDA9006BF6F0 /* HaruWidgetExtension.entitlements */,
 				DE17F51B2C9BACF800008884 /* Haru */,
 				DE47CEE42CCB1AAB0067B02D /* HaruWidget */,
 				DE47CEDF2CCB1AAB0067B02D /* Frameworks */,
@@ -140,18 +152,24 @@
 		DE17F51B2C9BACF800008884 /* Haru */ = {
 			isa = PBXGroup;
 			children = (
+				DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */,
 				DE17F51C2C9BACF800008884 /* HaruApp.swift */,
-				DEC1205D2CC0A2690052E1E4 /* ColorExtension.swift */,
+				DE9A402C2CDEF3AE00B101CF /* Notification.swift */,
+				DE9A402E2CDEF3DB00B101CF /* notificationView.swift */,
+				DEC1205D2CC0A2690052E1E4 /* Extension.swift */,
 				DE17F5322C9BBCF000008884 /* InfoModel.swift */,
 				DE17F51E2C9BACF800008884 /* ContentView.swift */,
+				DE17F52A2C9BAD1000008884 /* HomeView.swift */,
 				DEA7BA142CC7453500618088 /* Home */,
 				DEB693E62CC1E07F00F7168F /* Group */,
 				DEB330CE2CB77D07003ECA05 /* Library */,
 				DE753CFE2CB4CC9400F691A0 /* Add */,
 				DE7D81562CA1075100A470DD /* SwiftUIView.swift */,
+				DE753D012CB4D2AC00F691A0 /* MemoryView.swift */,
 				DE3B156F2CACCB9A00BC493D /* PhotoPickerView.swift */,
 				DE17F5202C9BACF800008884 /* Assets.xcassets */,
 				DE22068F2CB8B8E7007A52FD /* cutClassification.mlmodel */,
+				DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */,
 				DE17F5222C9BACF800008884 /* Preview Content */,
 			);
 			path = Haru;
@@ -193,6 +211,7 @@
 				DE17F52C2C9BB35D00008884 /* AddView.swift */,
 				DE17F52E2C9BBA6800008884 /* AddInfoView.swift */,
 				DEC1205F2CC0E0450052E1E4 /* SelectGroupView.swift */,
+				DE5289F82CD9C7AF00E11186 /* AddImageTextView.swift */,
 				DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */,
 			);
 			path = Add;
@@ -201,9 +220,9 @@
 		DEA7BA142CC7453500618088 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				DE17F52A2C9BAD1000008884 /* HomeView.swift */,
 				DEB693E92CC1F6AB00F7168F /* SlideView.swift */,
 				DEA7BA122CC60D2F00618088 /* Memory1View.swift */,
+				DE16EC522CDD9E9E0089F064 /* MemoryInfoView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -212,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				DE7D81542CA100C300A470DD /* LibraryView.swift */,
-				DE753D012CB4D2AC00F691A0 /* MemoryView.swift */,
 				DE3B15732CACEF4900BC493D /* PhotoInfoView.swift */,
 			);
 			path = Library;
@@ -222,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				DE753CFF2CB4CF2300F691A0 /* SettingView.swift */,
-				DEB693E72CC1E6BF00F7168F /* AddtestView.swift */,
 				DE405E722CBE152600B38F06 /* MakeGroupView.swift */,
 			);
 			path = Group;
@@ -310,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE17F5242C9BACF800008884 /* Preview Assets.xcassets in Resources */,
+				DEEB11F02CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */,
 				DE17F5212C9BACF800008884 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE47CEEE2CCB1AAC0067B02D /* Assets.xcassets in Resources */,
+				DEEB11F12CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,23 +350,26 @@
 			files = (
 				DE7D81552CA100C300A470DD /* LibraryView.swift in Sources */,
 				DE17F52D2C9BB35D00008884 /* AddView.swift in Sources */,
-				DEC1205E2CC0A2690052E1E4 /* ColorExtension.swift in Sources */,
+				DEC1205E2CC0A2690052E1E4 /* Extension.swift in Sources */,
 				DE3B15702CACCB9A00BC493D /* PhotoPickerView.swift in Sources */,
+				DE5289F92CD9C7AF00E11186 /* AddImageTextView.swift in Sources */,
 				DE7D81572CA1075100A470DD /* SwiftUIView.swift in Sources */,
 				DE405E732CBE152600B38F06 /* MakeGroupView.swift in Sources */,
 				DE17F52B2C9BAD1000008884 /* HomeView.swift in Sources */,
+				DE9A402D2CDEF3AE00B101CF /* Notification.swift in Sources */,
 				DE17F51F2C9BACF800008884 /* ContentView.swift in Sources */,
+				DE16EC532CDD9E9E0089F064 /* MemoryInfoView.swift in Sources */,
 				DE17F51D2C9BACF800008884 /* HaruApp.swift in Sources */,
 				DE17F52F2C9BBA6800008884 /* AddInfoView.swift in Sources */,
 				DE2206902CB8B8E7007A52FD /* cutClassification.mlmodel in Sources */,
 				DEA7BA132CC60D2F00618088 /* Memory1View.swift in Sources */,
-				DEB693E82CC1E6BF00F7168F /* AddtestView.swift in Sources */,
 				DE753D002CB4CF2300F691A0 /* SettingView.swift in Sources */,
 				DEB693EA2CC1F6AB00F7168F /* SlideView.swift in Sources */,
 				DE17F5332C9BBCF000008884 /* InfoModel.swift in Sources */,
 				DE753D022CB4D2AC00F691A0 /* MemoryView.swift in Sources */,
 				DED8F0F52CB8D3C000732890 /* CustomImagePicker.swift in Sources */,
 				DE3B15742CACEF4900BC493D /* PhotoInfoView.swift in Sources */,
+				DE9A402F2CDEF3DB00B101CF /* notificationView.swift in Sources */,
 				DEC120602CC0E0450052E1E4 /* SelectGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +521,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Haru/Haru.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Haru/Preview Content\"";
@@ -530,6 +553,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Haru/Haru.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Haru/Preview Content\"";
@@ -560,6 +584,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HaruWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8W62FS2UWY;
@@ -587,6 +612,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HaruWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8W62FS2UWY;

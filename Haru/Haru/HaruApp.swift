@@ -10,9 +10,12 @@ import SwiftData
 
 @main
 struct HaruApp: App {
+    @StateObject var nm = NotificationManager.nm
+
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
 //            PhotoPickerView()
 //            PhotoPickView()
 //            CustomImagePicker()
@@ -20,8 +23,14 @@ struct HaruApp: App {
 //            SelectGroupView()
 //            HelloView()
 
-//            SettingView()
-//            HomeView()
+//            NavigationStack{
+//                SettingView()
+//            }
+                HomeView()
+                .onAppear {
+                    nm.request_authorization()
+                }
+            
         }
         .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
 

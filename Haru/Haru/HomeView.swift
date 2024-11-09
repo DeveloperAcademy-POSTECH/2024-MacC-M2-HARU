@@ -16,80 +16,87 @@ struct HomeView: View {
     @State var isSlide = false
     @Environment(\.dismiss) var dismiss
     
+    //    var currentSelectedGlobalTime = "Africa/Algiers"
+    //    UserDefaults.shared.set(currentSeletedGlobalTime, forKey: "timezone")
+    
     
     //    init(){
     //        updateImageIfNeeded()
     //    }
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("하루네컷")
-                    .fontWeight(.bold)
-                    .font(.system(size: 30))
+        NavigationStack{
+            VStack {
+                HStack {
+                    Text("하루네컷")
+                        .fontWeight(.bold)
+                        .font(.system(size: 30))
+                    Spacer()
+                    
+                    
+                    NavigationLink(destination: LibraryView()) {
+                        Image(systemName: "photo.fill")
+                            .foregroundColor(.customGray)
+                            .font(.system(size: 18))
+                    }
+                    
+                    NavigationLink(destination: SettingView()) {
+                        Image(systemName: "person.3.fill")
+                            .foregroundColor(.customGray)
+                            .font(.system(size: 18))
+                    }
+                    
+                    
+                }
+                .padding(.top, 30)
+                
                 Spacer()
+                Button {
+                    todayPhotoList = recommendPhotos(photos: photos)
+                } label: {
+                    Image(systemName: "arrow.clockwise")
+                        .foregroundColor(.customGray)
+                        .font(.system(size: 20))
+                }
                 
-            }
-            .padding(.top, 30)
-            
-            NavigationLink(destination: SettingView()) {
-                Image(systemName: "person.3.fill")
-                    .foregroundColor(.customGray)
-                    .font(.system(size: 18))
-            }
-
-            Spacer()
-            Button {
-                todayPhotoList = recommendPhotos(photos: photos)
-            } label: {
-                Image(systemName: "arrow.clockwise")
-                    .foregroundColor(.customGray)
-                    .font(.system(size: 20))
-            }
-            
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(width: 336, height: 423)
-                    .background(.white)
-                    .cornerRadius(25)
-                    .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 0)
-                
-                if let todayPhoto = todayPhotoList.randomElement() {
-                    if let uiImage = UIImage(data: todayPhoto.photo) {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 336)
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 336, height: 423)
+                        .background(.white)
+                        .cornerRadius(25)
+                        .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 0)
+                    
+                    if let todayPhoto = todayPhotoList.randomElement() {
+                        if let uiImage = UIImage(data: todayPhoto.photo) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 336)
+                        }
                     }
                 }
+                .padding(.vertical, 20)
+                
+                Text("추억여행")
+                    .foregroundColor(.white)
+                    .frame(width: 337, height: 59)
+                    .background(Color.blue)
+                    .cornerRadius(20)
+                    .onTapGesture {
+                        isSlide = true
+                    }
+                
+                Spacer()
             }
-            .padding(.vertical, 20)
+            .padding(.horizontal, 20)
+
+                
             
-            Text("추억여행")
-                .foregroundColor(.white)
-                .frame(width: 337, height: 59)
-                .background(Color.blue)
-                .cornerRadius(20)
-                .onTapGesture {
-                    isSlide = true
-                }
-            
-            Spacer()
+            .fullScreenCover(isPresented: $isSlide, content: {
+                    SlideView(photoList: $todayPhotoList)
+            })
         }
-        .padding(.horizontal, 20)
-        
-        .fullScreenCover(isPresented: $isSlide, content: {
-            VStack {
-                Button {
-                    isSlide = false
-                    dismiss()
-                } label: {
-                    Text("나가기")
-                }
-                SlideView(photoList: $todayPhotoList)
-            }
-        })
     }
     
     
