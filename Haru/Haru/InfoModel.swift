@@ -12,7 +12,7 @@ import SwiftData
 
 
 @Model
-class PhotoInfo {
+class PhotoInfo: Identifiable {
     var photo: Data
     var date: Date
     var text: String

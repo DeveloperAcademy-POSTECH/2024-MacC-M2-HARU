@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct LibraryView: View {
+    @Environment(\.dismiss) var dismiss
+
+    
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: nil, alignment: nil),
         GridItem(.flexible(), spacing: nil, alignment: nil),
@@ -29,14 +32,9 @@ struct LibraryView: View {
                 spacing: 6,
                 pinnedViews: [],
                 content: {
-                    ForEach(photos.indices, id: \.self) { index in
-                        NavigationLink(destination: 
-                                        Memory1View(photoInfo: Binding(get: {
-                                                photos[index]
-                        }, set: {_ in
-                                            } )))
-                                        {
-                            if let uiImage = UIImage(data: photos[index].photo) {
+                    ForEach(photos) { photo in
+                        NavigationLink(destination: Memory1View(photoInfo: Binding(get: { photo }, set: { _ in }))) {
+                            if let uiImage = UIImage(data: photo.photo) {
                                 Image(uiImage: uiImage)
                                     .resizable()
                                     .scaledToFill()
@@ -45,6 +43,7 @@ struct LibraryView: View {
                             }
                         }
                     }
+
                     
                 }
                 
@@ -58,6 +57,10 @@ struct LibraryView: View {
 
         .navigationBarItems(trailing:
                                 Button { isSheetOpen = true } label: {Image(systemName: "plus") .foregroundColor(Color.CustomPink)})
+        
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
         
         .fullScreenCover(isPresented: $isSheetOpen, content: {
                 NavigationStack {

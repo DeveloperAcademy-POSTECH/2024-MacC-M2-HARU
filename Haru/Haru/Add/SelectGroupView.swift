@@ -9,17 +9,18 @@ import SwiftUI
 import SwiftData
 
 struct SelectGroupView: View {
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) var dismiss
+    
     @Binding var isSheetOpen: Bool
 
     @Binding var photo: Data
     @Binding var date: Date
     
     
-    
-    
-    //    @State var selectedGroup: String = ""
     @Query var groupList: [GroupInfo]
-    @Environment(\.modelContext) var modelContext
+
+
 
     
     @State private var selectedGroup: GroupInfo? // 선택된 그룹
@@ -144,6 +145,10 @@ struct SelectGroupView: View {
             Text("다음")
                 .foregroundColor(.black)
         })
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
+        
         
         
         

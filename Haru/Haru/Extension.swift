@@ -13,7 +13,7 @@ extension Color{
     static let customGray = Color(hex: "999999")
     static let customBlack = Color(hex: "333333")
     static let LightPink = Color(hex: "FCF3F2")
-    static let CustomPink = Color(hex: "FFBCB6")
+    static let CustomPink = Color(hex: "FF8C8A")
     static let ListBackground = Color(hex: "FFF8F7")
 }
 

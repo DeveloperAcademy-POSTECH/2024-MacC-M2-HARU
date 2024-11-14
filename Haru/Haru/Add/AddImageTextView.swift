@@ -11,9 +11,8 @@ import SwiftUI
 import SwiftData
 
 struct AddImageTextView: View {
-    //    @Binding var stack: NavigationPath
-    
-    //    @Binding var path: [String]
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) var dismiss
     
     @Binding var isSheetOpen: Bool
 
@@ -21,7 +20,6 @@ struct AddImageTextView: View {
     @Binding var date: Date
     @Binding var groupName: String // 선택된 그룹
     @Binding var groupMember: [String] // 그룹 멤버 복사
-    @Environment(\.modelContext) var modelContext
 
     
     @State var text: String = ""
@@ -101,6 +99,10 @@ struct AddImageTextView: View {
                 .foregroundColor(.black)
         }
         )
+        
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
         
     }
     

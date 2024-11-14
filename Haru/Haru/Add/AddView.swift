@@ -8,6 +8,9 @@
 import PhotosUI
 import SwiftUI
 
+
+
+
 struct AddView: View {
     //    @Binding var stack: NavigationPath
     
@@ -22,6 +25,8 @@ struct AddView: View {
     @State var endDate: Date = Date()
     
     @Binding var isSheetOpen: Bool
+    
+    
     
     
     var body: some View {
@@ -41,7 +46,7 @@ struct AddView: View {
                 
                 
                 
-                NavigationLink(destination: CustomImagePicker(startDate: $startDate, endDate: $endDate)) {
+                NavigationLink(destination: MLDataPickerView()) {
                     ZStack{
                         Rectangle()
                             .foregroundColor(.clear)
@@ -64,36 +69,29 @@ struct AddView: View {
                     .scaledToFit()
                     .frame(height: 300)
                 
-                //                NavigationLink(destination: AddInfoView(isSheetOpen: $isSheetOpen, ImageData: ImageData!)){
-                //
-                //
-                //                    Text("사진 등록하기")
-                //                        .foregroundColor(.white)
-                //                        .frame(width: 337, height: 59)
-                //                        .background(Color.blue)
-                //                        .cornerRadius(20)
-                //                }
+                NavigationLink(destination: AddInfoView(isSheetOpen: $isSheetOpen, ImageData: ImageData!)){
+                    
+                    
+                    Text("사진 등록하기")
+                        .foregroundColor(.white)
+                        .frame(width: 337, height: 59)
+                        .background(Color.blue)
+                        .cornerRadius(20)
+                }
             }
             
             Spacer()
         }
         .navigationTitle("보관함")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar(content: {
-            ToolbarItem(placement: .navigationBarTrailing, content: {
-//                NavigationLink(destination: AddInfoView(isSheetOpen: $isSheetOpen, ImageData: ImageData!))
-//                {
-//                네비게이션만 달면 문제 생김 왜 그럼 제 발
-                    Text("다음")
-                        .foregroundColor(.black)
-//                }
-            })
-        })
+        .navigationBarItems(leading:
+                                Image(systemName: "chevron.left") .onTapGesture { isSheetOpen = false })
         
         
         .task(id: selectedItem) {
             // 선택된 아이템에서 이미지 데이터 가져오기
             if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
+                
                 ImageData = data
             }
         }

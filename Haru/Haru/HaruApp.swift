@@ -15,21 +15,12 @@ struct HaruApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//            PhotoPickerView()
-//            PhotoPickView()
-//            CustomImagePicker()
-//            CutClassificationView()
-//            SelectGroupView()
-//            HelloView()
-
-//            NavigationStack{
-//                SettingView()
-//            }
                 HomeView()
                 .onAppear {
                     nm.request_authorization()
+                    nm.schedule_notification() // 추가
                 }
+
             
         }
         .modelContainer(for: [PhotoInfo.self, GroupInfo.self])

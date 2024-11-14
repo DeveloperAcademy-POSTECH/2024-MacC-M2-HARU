@@ -1,5 +1,5 @@
 //
-//  Notification.swift
+//  NotificationManager.swift
 //  Haru
 //
 //  Created by 김은정 on 11/9/24.
@@ -31,11 +31,11 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
     
     func schedule_notification() {
         let content = UNMutableNotificationContent()
-        content.title = "title"
-        content.body = "content"
+        content.title = "하루네컷"
+        content.body = "오늘 하루의 네컷을 확인하세요"
         content.sound = UNNotificationSound.default
         
-        let dateComponents = DateComponents(hour: 11, minute: 12)
+        let dateComponents = DateComponents(hour: 9, minute: 23)
         
         // trigger
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
@@ -52,10 +52,10 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-            completionHandler([.alert, .sound])
-        }
-
-        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-            completionHandler()
-        }
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
 }

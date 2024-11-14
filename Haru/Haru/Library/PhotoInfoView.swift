@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct PhotoInfo1View: View {
-//    @Binding var stack: NavigationPath
-//    @Binding var photoInfo: PhotoInfo?
+    @Environment(\.dismiss) var dismiss
+
 
     @State private var isSwiped = false
 
     
     var body: some View {
         VStack{
-            
             if let uiImage = UIImage(named: "4cut1") {
                 Image(uiImage: uiImage)
                     .resizable()
@@ -34,6 +33,9 @@ struct PhotoInfo1View: View {
                         )
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
 
     }
 }

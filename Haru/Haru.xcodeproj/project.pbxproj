@@ -33,8 +33,8 @@
 		DE753D022CB4D2AC00F691A0 /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE753D012CB4D2AC00F691A0 /* MemoryView.swift */; };
 		DE7D81552CA100C300A470DD /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D81542CA100C300A470DD /* LibraryView.swift */; };
 		DE7D81572CA1075100A470DD /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D81562CA1075100A470DD /* SwiftUIView.swift */; };
-		DE9A402D2CDEF3AE00B101CF /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A402C2CDEF3AE00B101CF /* Notification.swift */; };
-		DE9A402F2CDEF3DB00B101CF /* notificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A402E2CDEF3DB00B101CF /* notificationView.swift */; };
+		DE9A402D2CDEF3AE00B101CF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */; };
+		DE9A40312CDF02CF00B101CF /* MLDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A40302CDF02CF00B101CF /* MLDataPickerView.swift */; };
 		DEA7BA132CC60D2F00618088 /* Memory1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA7BA122CC60D2F00618088 /* Memory1View.swift */; };
 		DEB693EA2CC1F6AB00F7168F /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB693E92CC1F6AB00F7168F /* SlideView.swift */; };
 		DEC1205E2CC0A2690052E1E4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205D2CC0A2690052E1E4 /* Extension.swift */; };
@@ -42,6 +42,7 @@
 		DED8F0F52CB8D3C000732890 /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */; };
 		DEEB11F02CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
 		DEEB11F12CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
+		DEF5725B2CE583670042C68A /* 뽑기통.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF5725A2CE583670042C68A /* 뽑기통.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,8 +98,8 @@
 		DE753D012CB4D2AC00F691A0 /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
 		DE7D81542CA100C300A470DD /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		DE7D81562CA1075100A470DD /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		DE9A402C2CDEF3AE00B101CF /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		DE9A402E2CDEF3DB00B101CF /* notificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationView.swift; sourceTree = "<group>"; };
+		DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		DE9A40302CDF02CF00B101CF /* MLDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDataPickerView.swift; sourceTree = "<group>"; };
 		DEA7BA122CC60D2F00618088 /* Memory1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory1View.swift; sourceTree = "<group>"; };
 		DEB693E92CC1F6AB00F7168F /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		DEC1205D2CC0A2690052E1E4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4cut1.jpg; sourceTree = "<group>"; };
 		DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Haru.entitlements; sourceTree = "<group>"; };
 		DEEB11F32CD1DDA9006BF6F0 /* HaruWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HaruWidgetExtension.entitlements; sourceTree = "<group>"; };
+		DEF5725A2CE583670042C68A /* 뽑기통.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "뽑기통.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +156,7 @@
 			children = (
 				DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */,
 				DE17F51C2C9BACF800008884 /* HaruApp.swift */,
-				DE9A402C2CDEF3AE00B101CF /* Notification.swift */,
-				DE9A402E2CDEF3DB00B101CF /* notificationView.swift */,
+				DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */,
 				DEC1205D2CC0A2690052E1E4 /* Extension.swift */,
 				DE17F5322C9BBCF000008884 /* InfoModel.swift */,
 				DE17F51E2C9BACF800008884 /* ContentView.swift */,
@@ -170,6 +171,7 @@
 				DE17F5202C9BACF800008884 /* Assets.xcassets */,
 				DE22068F2CB8B8E7007A52FD /* cutClassification.mlmodel */,
 				DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */,
+				DEF5725A2CE583670042C68A /* 뽑기통.png */,
 				DE17F5222C9BACF800008884 /* Preview Content */,
 			);
 			path = Haru;
@@ -212,6 +214,7 @@
 				DE17F52E2C9BBA6800008884 /* AddInfoView.swift */,
 				DEC1205F2CC0E0450052E1E4 /* SelectGroupView.swift */,
 				DE5289F82CD9C7AF00E11186 /* AddImageTextView.swift */,
+				DE9A40302CDF02CF00B101CF /* MLDataPickerView.swift */,
 				DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */,
 			);
 			path = Add;
@@ -328,6 +331,7 @@
 			files = (
 				DE17F5242C9BACF800008884 /* Preview Assets.xcassets in Resources */,
 				DEEB11F02CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */,
+				DEF5725B2CE583670042C68A /* 뽑기통.png in Resources */,
 				DE17F5212C9BACF800008884 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,7 +360,7 @@
 				DE7D81572CA1075100A470DD /* SwiftUIView.swift in Sources */,
 				DE405E732CBE152600B38F06 /* MakeGroupView.swift in Sources */,
 				DE17F52B2C9BAD1000008884 /* HomeView.swift in Sources */,
-				DE9A402D2CDEF3AE00B101CF /* Notification.swift in Sources */,
+				DE9A402D2CDEF3AE00B101CF /* NotificationManager.swift in Sources */,
 				DE17F51F2C9BACF800008884 /* ContentView.swift in Sources */,
 				DE16EC532CDD9E9E0089F064 /* MemoryInfoView.swift in Sources */,
 				DE17F51D2C9BACF800008884 /* HaruApp.swift in Sources */,
@@ -369,7 +373,7 @@
 				DE753D022CB4D2AC00F691A0 /* MemoryView.swift in Sources */,
 				DED8F0F52CB8D3C000732890 /* CustomImagePicker.swift in Sources */,
 				DE3B15742CACEF4900BC493D /* PhotoInfoView.swift in Sources */,
-				DE9A402F2CDEF3DB00B101CF /* notificationView.swift in Sources */,
+				DE9A40312CDF02CF00B101CF /* MLDataPickerView.swift in Sources */,
 				DEC120602CC0E0450052E1E4 /* SelectGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

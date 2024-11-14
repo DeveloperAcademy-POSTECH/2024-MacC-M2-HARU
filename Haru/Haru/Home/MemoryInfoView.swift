@@ -21,7 +21,7 @@ struct MemoryInfoView: View {
             Color(.white)
             VStack{
                 Rectangle()
-                    .foregroundColor(.gray)
+                    .foregroundColor(.customGray)
                     .frame(width: 36, height: 5)
                     .cornerRadius(2.5)
                 

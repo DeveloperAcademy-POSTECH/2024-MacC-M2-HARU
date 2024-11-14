@@ -23,6 +23,10 @@ struct HomeView: View {
     //    init(){
     //        updateImageIfNeeded()
     //    }
+    @State var maxCount = 0
+    
+    @State var isOpen = false
+    
     
     var body: some View {
         NavigationStack{
@@ -32,32 +36,28 @@ struct HomeView: View {
                         .fontWeight(.bold)
                         .font(.system(size: 30))
                     Spacer()
-                    
+                    Button {
+                        todayPhotoList = recommendPhotos(photos: photos)
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                            .foregroundColor(.customGray)
+                            .font(.system(size: 20))
+                    }
                     
                     NavigationLink(destination: LibraryView()) {
                         Image(systemName: "photo.fill")
                             .foregroundColor(.customGray)
                             .font(.system(size: 18))
                     }
-                    
                     NavigationLink(destination: SettingView()) {
                         Image(systemName: "person.3.fill")
                             .foregroundColor(.customGray)
                             .font(.system(size: 18))
                     }
-                    
-                    
                 }
                 .padding(.top, 30)
                 
-                Spacer()
-                Button {
-                    todayPhotoList = recommendPhotos(photos: photos)
-                } label: {
-                    Image(systemName: "arrow.clockwise")
-                        .foregroundColor(.customGray)
-                        .font(.system(size: 20))
-                }
+//                Spacer()
                 
                 ZStack {
                     Rectangle()
@@ -65,36 +65,46 @@ struct HomeView: View {
                         .frame(width: 336, height: 423)
                         .background(.white)
                         .cornerRadius(25)
-                        .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 0)
+                        .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 0)
                     
-                    if let todayPhoto = todayPhotoList.randomElement() {
-                        if let uiImage = UIImage(data: todayPhoto.photo) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 336)
+                    if isOpen {
+                        if let todayPhoto = todayPhotoList.first {
+                            if let uiImage = UIImage(data: todayPhoto.photo) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 336)
+                            }
                         }
                     }
+                    
+                    else {
+                        Image("뽑기통")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 500)
+                        
+                    }
+
                 }
+                .frame(height: 500)
                 .padding(.vertical, 20)
                 
-                Text("추억여행")
+                Text("오늘의 캡슐")
                     .foregroundColor(.white)
                     .frame(width: 337, height: 59)
-                    .background(Color.blue)
+                    .background(Color.CustomPink)
                     .cornerRadius(20)
                     .onTapGesture {
                         isSlide = true
+                        isOpen = true
                     }
                 
                 Spacer()
             }
             .padding(.horizontal, 20)
-
-                
-            
             .fullScreenCover(isPresented: $isSlide, content: {
-                    SlideView(photoList: $todayPhotoList)
+                SlideView(photoList: $todayPhotoList)
             })
         }
     }
@@ -113,8 +123,17 @@ struct HomeView: View {
     
     // 사진 추천
     func recommendPhotos(photos: [PhotoInfo]) -> [PhotoInfo] {
+        print("\(maxCount)")
+        maxCount = photos.count
+        print("변경1 \(maxCount)")
+        
+        if maxCount > 4 {
+            maxCount = 5
+        }
+        print("변경2 \(maxCount)")
+        
         if hasPhotoForToday(photos: photos) {
-            //            오늘 사진으로 수정
+            //오늘 사진으로 수정
             let todayPhoto = photos.first
             
             return scorerecommendPhotos(inputPhoto: todayPhoto!, allPhotos: photos)
@@ -155,20 +174,20 @@ struct HomeView: View {
         }
         
         // N년 전 오늘 사진이 부족한 경우, N개월 전 오늘 사진으로 채우기
-        if recommendedPhotos.count < 5 {
-            let remainingCount = 5 - recommendedPhotos.count
+        if recommendedPhotos.count < maxCount {
+            let remainingCount = maxCount - recommendedPhotos.count
             let additionalMonthPhotos = monthPhotos.shuffled().prefix(remainingCount)
             recommendedPhotos.append(contentsOf: additionalMonthPhotos)
         }
         
         // 5장 이하일 경우, 랜덤으로 추가 추천
-        if recommendedPhotos.count < 5 {
-            let remainingCount = 5 - recommendedPhotos.count
+        if recommendedPhotos.count < maxCount {
+            let remainingCount = maxCount - recommendedPhotos.count
             let randomPhotos = recommendRandomPhotos(photos: photos, count: remainingCount)
             recommendedPhotos.append(contentsOf: randomPhotos)
         }
         
-        return Array(recommendedPhotos.prefix(5)) // 최대 5장 반환
+        return Array(recommendedPhotos.prefix(maxCount)) // 최대 5장 반환
     }
     
     // N년 전 오늘
@@ -275,8 +294,9 @@ struct HomeView: View {
         }
         
         similarities.sort { $0.score > $1.score }
+        print("\(maxCount)")
         
-        return similarities.prefix(5).map { $0.photo }
+        return similarities.prefix(maxCount).map { $0.photo }
     }
 }
 

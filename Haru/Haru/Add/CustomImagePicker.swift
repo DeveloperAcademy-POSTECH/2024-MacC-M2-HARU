@@ -14,43 +14,104 @@ struct CustomImagePicker: View {
     @State private var assets: [PHAsset] = []
     @State private var selectedAssets: [PHAsset] = [] // 선택된 사진 배열
     @State private var currentIndex = 0
-    @State private var isLoading = false
+    @State private var isLoading = true
     private let fetchLimit = 500000
     @Binding var startDate: Date
     @Binding var endDate: Date
     
     @Environment(\.modelContext) var modelContext
 
-    
     var body: some View {
         VStack {
-            ScrollView {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
-                    ForEach(assets, id: \.self) { asset in
-                        ImageCell(asset: asset, isSelected: selectedAssets.contains(asset)) {
-                            toggleSelection(for: asset)
+            if isLoading {
+                // 로딩 화면
+                ProgressView("로딩 중...")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .padding()
+                    .onAppear {
+                        fetchPhotos(startDate: startDate, endDate: endDate)
+                    }
+                
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
+                        ForEach(assets, id: \.self) { asset in
+                            ImageCell(asset: asset, isSelected: selectedAssets.contains(asset)) {
+                                toggleSelection(for: asset)
+                            }
                         }
                     }
+                    .padding()
+                }
+                .navigationTitle("사진 선택기")
+                
+                Button(action: saveSelectedPhotos) {
+                    Text("저장하기")
+                        .font(.headline)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                 }
                 .padding()
+                .disabled(selectedAssets.isEmpty) // 선택된 사진이 없으면 비활성화
             }
-            .navigationTitle("사진 선택기")
-            .onAppear {
-                fetchPhotos(startDate: startDate, endDate: endDate)
+        }
+
+    }
+    
+    private func fetchPhotos(startDate: Date, endDate: Date) {
+        self.isLoading = true // 로딩 시작
+        let options = PHFetchOptions()
+        options.includeHiddenAssets = false
+        options.includeAssetSourceTypes = [.typeUserLibrary]
+        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+        // 날짜 범위 설정
+        options.predicate = NSPredicate(format: "creationDate >= %@ AND creationDate <= %@", startDate as NSDate, endDate as NSDate)
+        
+        let album = PHAsset.fetchAssets(with: .image, options: options)
+        let assetsCount = album.count
+
+        // assetsCount가 0인 경우
+        guard assetsCount > 0 else {
+            print("가져올 사진이 없습니다.")
+            self.isLoading = false // 로딩 종료
+            return
+        }
+
+        // currentIndex가 assetsCount를 초과할 경우 처리
+        guard currentIndex < assetsCount else {
+            print("더 이상 가져올 사진이 없습니다.")
+            self.isLoading = false // 로딩 종료
+            return
+        }
+
+        let dispatchGroup = DispatchGroup() // 비동기 처리를 위한 DispatchGroup
+        let endIndex = min(currentIndex + fetchLimit, assetsCount)
+
+        for index in currentIndex..<endIndex {
+            print("실행")
+            if let asset = album.object(at: index) as? PHAsset {
+                dispatchGroup.enter() // 새로운 작업 시작
+                
+                classifyImage(asset: asset) { isFourCut in
+                    if isFourCut {
+                        DispatchQueue.main.async {
+                            self.assets.append(asset) // 배열에 추가
+                        }
+                    }
+                    dispatchGroup.leave() // 작업 완료
+                }
             }
-            
-            Button(action: saveSelectedPhotos) {
-                Text("저장하기")
-                    .font(.headline)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-            .padding()
-            .disabled(selectedAssets.isEmpty) // 선택된 사진이 없으면 비활성화
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.currentIndex += fetchLimit // 다음 가져올 사진 인덱스 업데이트
+            self.isLoading = false // 로딩 종료
         }
     }
+    
     
     private func toggleSelection(for asset: PHAsset) {
         if let index = selectedAssets.firstIndex(of: asset) {
@@ -61,7 +122,7 @@ struct CustomImagePicker: View {
     }
     
     private func saveSelectedPhotos() {
-        var photoInfos: [PhotoInfo] = []
+//        var photoInfos: [PhotoInfo] = []
         
         let imageManager = PHImageManager.default()
         let options = PHImageRequestOptions()
@@ -81,88 +142,51 @@ struct CustomImagePicker: View {
         }
 
         // photoInfos를 SwiftData에 저장하는 로직 추가
-        print("저장할 사진 개수: \(photoInfos.count)")
+//        print("저장할 사진 개수: \(photoInfos.count)")
         // 예시: 저장하는 로직 구현
     }
 
-    private func fetchPhotos(startDate: Date, endDate: Date) {
-        let options = PHFetchOptions()
-        options.includeHiddenAssets = false
-        options.includeAssetSourceTypes = [.typeUserLibrary]
-        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
-        // 날짜 범위 설정
-        options.predicate = NSPredicate(format: "creationDate >= %@ AND creationDate <= %@", startDate as NSDate, endDate as NSDate)
-        
-        let album = PHAsset.fetchAssets(with: .image, options: options)
-        let assetsCount = album.count
 
-        // currentIndex가 assetsCount를 초과할 경우 처리
-        if currentIndex >= assetsCount {
-            print("더 이상 가져올 사진이 없습니다.")
-            return
-        }
-
-        let dispatchGroup = DispatchGroup() // 비동기 처리를 위한 DispatchGroup
-        for index in currentIndex..<min(assetsCount, currentIndex + fetchLimit) {
-            print("실행")
-            if let asset = album.object(at: index) as? PHAsset {
-                dispatchGroup.enter() // 새로운 작업 시작
-                
-                classifyImage(asset: asset) { isFourCut in
-                    if isFourCut {
-                        self.assets.append(asset) // 배열에 추가
-                    }
-                    dispatchGroup.leave() // 작업 완료
-                }
-            }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            self.currentIndex += self.fetchLimit
-            self.isLoading = false
-        }
-    }
-
-    private func loadMorePhotos(startDate: Date, endDate: Date) {
-        guard !isLoading else { return }
-        isLoading = true
-        
-        let options = PHFetchOptions()
-        options.includeHiddenAssets = false
-        options.includeAssetSourceTypes = [.typeUserLibrary]
-        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
-        // 날짜 범위 설정
-        options.predicate = NSPredicate(format: "creationDate >= %@ AND creationDate <= %@", startDate as NSDate, endDate as NSDate)
-        
-        let album = PHAsset.fetchAssets(with: .image, options: options)
-        let assetsCount = album.count
-        
-        let dispatchGroup = DispatchGroup() // 비동기 처리를 위한 DispatchGroup
-        
-        for index in currentIndex..<min(assetsCount, currentIndex + fetchLimit) {
-            if let asset = album.object(at: index) as? PHAsset {
-                print("실행")
-
-                dispatchGroup.enter() // 새로운 작업 시작
-                
-                classifyImage(asset: asset) { isFourCut in
-                    if isFourCut {
-                        self.assets.append(asset) // 배열에 추가
-                    }
-                    dispatchGroup.leave() // 작업 완료
-                }
-            }
-        }
-        print("끝")
-
-        
-        dispatchGroup.notify(queue: .main) {
-            self.currentIndex += self.fetchLimit
-            self.isLoading = false
-        }
-    }
+    
+//    private func loadMorePhotos(startDate: Date, endDate: Date) {
+//        guard !isLoading else { return }
+//        isLoading = true
+//        
+//        let options = PHFetchOptions()
+//        options.includeHiddenAssets = false
+//        options.includeAssetSourceTypes = [.typeUserLibrary]
+//        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+//        
+//        // 날짜 범위 설정
+//        options.predicate = NSPredicate(format: "creationDate >= %@ AND creationDate <= %@", startDate as NSDate, endDate as NSDate)
+//        
+//        let album = PHAsset.fetchAssets(with: .image, options: options)
+//        let assetsCount = album.count
+//        
+//        let dispatchGroup = DispatchGroup() // 비동기 처리를 위한 DispatchGroup
+//        
+//        for index in currentIndex..<min(assetsCount, currentIndex + fetchLimit) {
+//            if let asset = album.object(at: index) as? PHAsset {
+//                print("실행")
+//
+//                dispatchGroup.enter() // 새로운 작업 시작
+//                
+//                classifyImage(asset: asset) { isFourCut in
+//                    if isFourCut {
+//                        self.assets.append(asset) // 배열에 추가
+//                    }
+//                    dispatchGroup.leave() // 작업 완료
+//                }
+//            }
+//        }
+//        print("끝")
+//
+//        
+//        dispatchGroup.notify(queue: .main) {
+//            self.currentIndex += self.fetchLimit
+//            self.isLoading = false
+//        }
+//    }
 
     func classifyImage(asset: PHAsset, completion: @escaping (Bool) -> Void) {
         let imageManager = PHImageManager.default()
@@ -223,9 +247,10 @@ struct ImageCell: View {
             if let uiImage = image {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 100)
+                    .scaledToFill()
+                    .frame(width: 120, height: 180)
                     .clipped()
+
                     .cornerRadius(8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)

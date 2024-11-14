@@ -18,74 +18,97 @@ struct Memory1View: View {
     @Binding var photoInfo: PhotoInfo
     
     @State private var backgroundColor: Color = .white
-    
-    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.72
+    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.8
     @State private var currentDragOffsetY: CGFloat = 0
     @State private var endingOffsetY: CGFloat = 0
     
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) var dismiss
+
+
     
     var body: some View {
         VStack {
             if let image = UIImage(data: photoInfo.photo) {
-                ZStack {
+                ZStack (alignment: .top) {
                     Rectangle()
                         .fill(backgroundColor)
                         .edgesIgnoringSafeArea(.all)
                     
-                    ZStack {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 550)
-                        
-                        MemoryInfoView(photoInfo: $photoInfo)
-                        //                            MemoryInfoView()
-                            .cornerRadius(10)
-                            .offset(y: startingOffsetY)
-                            .offset(y: currentDragOffsetY)
-                            .offset(y: endingOffsetY)
-                            .gesture(
-                                DragGesture()
-                                    .onChanged({ value in
-                                        withAnimation(.spring()) {
-                                            currentDragOffsetY = value.translation.height
-                                        }
-                                    })
-                                    .onEnded({ value in
-                                        withAnimation(.spring()) {
-                                            if currentDragOffsetY < -150 {
-                                                endingOffsetY = -UIScreen.main.bounds.height * 0.3 // 절반 올라오게 설정
-                                                currentDragOffsetY = .zero
-                                            } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
-                                                endingOffsetY = 0 // 원래 위치로 돌아가기
-                                                currentDragOffsetY = .zero
-                                            } else {
-                                                currentDragOffsetY = .zero
-                                            }
-                                        }
-                                    })
+                    
+                    
+                    
+                    
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 550)
+                        .padding(.top, 60)
+                    
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(maxWidth: .infinity, maxHeight: 90)
+                        .background(
+                            LinearGradient(
+                                stops: [
+                                    Gradient.Stop(color: .black.opacity(0.1), location: 0.00),
+                                    Gradient.Stop(color: .black.opacity(0), location: 1.00),
+                                ],
+                                startPoint: UnitPoint(x: 0.5, y: 0),
+                                endPoint: UnitPoint(x: 0.5, y: 1)
                             )
-                    }
+                        )
+                    
+                    
+                    MemoryInfoView(photoInfo: $photoInfo)
+                        .cornerRadius(10)
+                        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
+                    
+                        .offset(y: startingOffsetY)
+                        .offset(y: currentDragOffsetY)
+                        .offset(y: endingOffsetY)
+                        .gesture(
+                            DragGesture()
+                                .onChanged({ value in
+                                    withAnimation(.spring()) {
+                                        currentDragOffsetY = value.translation.height
+                                    }
+                                })
+                                .onEnded({ value in
+                                    withAnimation(.spring()) {
+                                        if currentDragOffsetY < -150 {
+                                            endingOffsetY = -UIScreen.main.bounds.height * 0.3 // 절반 올라오게 설정
+                                            currentDragOffsetY = .zero
+                                        } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
+                                            endingOffsetY = 0 // 원래 위치로 돌아가기
+                                            currentDragOffsetY = .zero
+                                        } else {
+                                            currentDragOffsetY = .zero
+                                        }
+                                    }
+                                })
+                        )
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
             }
         }
+        .onChange(of: photoInfo){
+            loadImageAndColor()
+        }
         .task {
             loadImageAndColor()
-            print("변경")
-            startingOffsetY = UIScreen.main.bounds.height * 0.72
-            currentDragOffsetY = 0
-            endingOffsetY = 0
         }
+        .navigationBarItems(trailing: Menu {
+            Button("수정", action: {})
+            Button("삭제", action: {modelContext.delete(photoInfo); dismiss()})
+        } label: {Image(systemName: "ellipsis")
+                .foregroundColor(.customGray)
+        })
         
-        .onChange(of: photoInfo) { _ in
-            loadImageAndColor()
-            print("사진이 바뀌면 실행")
-        }
     }
     
-    
-    func loadImageAndColor() {
+    func loadImageAndColor()  {
         if let uiImage = UIImage(data: photoInfo.photo) {
             self.backgroundColor = extractDominantColor(from: uiImage)
         }
@@ -127,5 +150,22 @@ struct Memory1View: View {
         let b = CGFloat(dominantColor & 0xFF) / 255.0
         
         return Color(red: r, green: g, blue: b)
+    }
+}
+
+
+struct Memory1View_Previews: PreviewProvider {
+    static var previews: some View {
+        let sampleImage = UIImage(named: "4cut1") // 로컬 이미지 이름으로 변경
+        let imageData = sampleImage?.pngData() ?? Data() // 이미지 데이터를 Data로 변환
+        
+        
+        let newInfo = PhotoInfo(photo: imageData, date: Date(), text:" ", groupName: "그룹1", groupMember: ["멤버1", "멤버2"])
+        
+        
+        NavigationStack {
+            Memory1View(photoInfo: .constant(newInfo))
+            
+        }
     }
 }

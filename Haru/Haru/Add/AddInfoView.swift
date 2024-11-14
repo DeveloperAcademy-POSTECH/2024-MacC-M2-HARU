@@ -9,15 +9,18 @@ import SwiftUI
 import SwiftData
 
 struct AddInfoView: View {
-    //    @Binding var stack: NavigationPath
-    
-    //    @Binding var path: [String]
+    @Environment(\.dismiss) var dismiss
+
     
     @Binding var isSheetOpen: Bool
     
     
     @State var ImageData: Data
+//    @Binding var date: Date
+    
+    
     @State var date: Date = Date()
+
     
     
     var body: some View {
@@ -73,23 +76,25 @@ struct AddInfoView: View {
                         .foregroundColor(.black)
                 }
             })
-                        })
+        })
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
+        //        .navigationBarItems(trailing: )
         
-            //        .navigationBarItems(trailing: )
+    }
+    
+}
+
+struct AddInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        let sampleImage = UIImage(named: "4cut1") // 로컬 이미지 이름으로 변경
+        let imageData = sampleImage?.pngData() ?? Data() // 이미지 데이터를 Data로 변환
+        
+        NavigationStack {
+            AddInfoView(isSheetOpen: .constant(true), ImageData: imageData)
+                .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
             
         }
-                 
-                 }
-                 
-                 struct AddInfoView_Previews: PreviewProvider {
-            static var previews: some View {
-                let sampleImage = UIImage(named: "4cut1") // 로컬 이미지 이름으로 변경
-                let imageData = sampleImage?.pngData() ?? Data() // 이미지 데이터를 Data로 변환
-                
-                NavigationStack {
-                    AddInfoView(isSheetOpen: .constant(true), ImageData: imageData)
-                        .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
-                    
-                }
-            }
-        }
+    }
+}
