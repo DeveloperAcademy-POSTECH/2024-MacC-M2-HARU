@@ -109,6 +109,8 @@ struct HomeView: View {
             .padding(.horizontal, 20)
 
         }
+        .tint(Color.customGray)
+
         .fullScreenCover(isPresented: $isSlide, content: {
             SlideView(photoList: $todayPhotoList)
         })
