@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MLDataPickerView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     
     @State var startDate: Date = Date()
     @State var endDate: Date = Date()
@@ -60,9 +60,9 @@ struct MLDataPickerView: View {
             })
         })
         
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading:
+//                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
         
 
         

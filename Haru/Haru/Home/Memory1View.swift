@@ -23,9 +23,9 @@ struct Memory1View: View {
     @State private var endingOffsetY: CGFloat = 0
     
     @Environment(\.modelContext) var modelContext
-    @Environment(\.dismiss) var dismiss
-
-
+//    @Environment(\.dismiss) var dismiss
+    
+    
     
     var body: some View {
         VStack {
@@ -34,10 +34,6 @@ struct Memory1View: View {
                     Rectangle()
                         .fill(backgroundColor)
                         .edgesIgnoringSafeArea(.all)
-                    
-                    
-                    
-                    
                     
                     Image(uiImage: image)
                         .resizable()
@@ -99,12 +95,20 @@ struct Memory1View: View {
         .task {
             loadImageAndColor()
         }
+        
         .navigationBarItems(trailing: Menu {
             Button("수정", action: {})
-            Button("삭제", action: {modelContext.delete(photoInfo); dismiss()})
+            Button("삭제", action: {modelContext.delete(photoInfo)})
         } label: {Image(systemName: "ellipsis")
                 .foregroundColor(.customGray)
         })
+        
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading:
+//                                Image(systemName: "chevron.left") .onTapGesture {
+//            print("왜 안됨")
+///*            dismiss() */})
+        
         
     }
     

@@ -9,8 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct LibraryView: View {
-    @Environment(\.dismiss) var dismiss
-
+//    @Environment(\.dismiss) var dismiss
+    
     
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: nil, alignment: nil),
@@ -19,10 +19,10 @@ struct LibraryView: View {
     ]
     
     @Query var photos: [PhotoInfo]
-//    @State var selectedPhoto: PhotoInfo
+    //    @State var selectedPhoto: PhotoInfo
     
     @State var isSheetOpen = false
-
+    
     
     var body: some View {
         ScrollView {
@@ -43,34 +43,30 @@ struct LibraryView: View {
                             }
                         }
                     }
-
+                    
                     
                 }
                 
-                //                }
             )
             
             .padding()
         }
         .navigationTitle("보관함")
         .navigationBarTitleDisplayMode(.inline)
-
+        
         .navigationBarItems(trailing:
                                 Button { isSheetOpen = true } label: {Image(systemName: "plus") .foregroundColor(Color.CustomPink)})
         
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading:
+//                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
         
         .fullScreenCover(isPresented: $isSheetOpen, content: {
-                NavigationStack {
-                    AddView(isSheetOpen: $isSheetOpen)
-                }
+            NavigationStack {
+                AddView(isSheetOpen: $isSheetOpen)
+            }
         })
         
-        //        .navigationDestination(for: PhotoInfo.self) { photo in
-        //
-        //        }
     }
 }
 

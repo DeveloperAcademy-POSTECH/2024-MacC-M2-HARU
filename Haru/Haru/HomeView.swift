@@ -14,7 +14,7 @@ struct HomeView: View {
     @State var todayPhotoList: [PhotoInfo] = []
     
     @State var isSlide = false
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     
     //    var currentSelectedGlobalTime = "Africa/Algiers"
     //    UserDefaults.shared.set(currentSeletedGlobalTime, forKey: "timezone")
@@ -32,6 +32,9 @@ struct HomeView: View {
         NavigationStack{
             VStack {
                 HStack {
+//                    Image("logo")
+//                        .resizable()
+//                        .scaledToFit()
                     Text("하루네컷")
                         .fontWeight(.bold)
                         .font(.system(size: 30))
@@ -49,6 +52,7 @@ struct HomeView: View {
                             .foregroundColor(.customGray)
                             .font(.system(size: 18))
                     }
+                    
                     NavigationLink(destination: SettingView()) {
                         Image(systemName: "person.3.fill")
                             .foregroundColor(.customGray)
@@ -103,10 +107,11 @@ struct HomeView: View {
                 Spacer()
             }
             .padding(.horizontal, 20)
-            .fullScreenCover(isPresented: $isSlide, content: {
-                SlideView(photoList: $todayPhotoList)
-            })
+
         }
+        .fullScreenCover(isPresented: $isSlide, content: {
+            SlideView(photoList: $todayPhotoList)
+        })
     }
     
     

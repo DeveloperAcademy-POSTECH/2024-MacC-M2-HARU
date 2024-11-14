@@ -12,7 +12,7 @@ import SwiftData
 
 struct AddImageTextView: View {
     @Environment(\.modelContext) var modelContext
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     
     @Binding var isSheetOpen: Bool
 
@@ -100,9 +100,9 @@ struct AddImageTextView: View {
         }
         )
         
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading:
+//                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
         
     }
     

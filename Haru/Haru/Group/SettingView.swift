@@ -11,7 +11,7 @@ import SwiftData
 
 
 struct SettingView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
 
     
     @Query var Groups: [GroupInfo]
@@ -59,9 +59,9 @@ struct SettingView: View {
         .navigationBarItems(trailing:
                                 Button { isSheetOpen = true } label: {Image(systemName: "plus") .foregroundColor(Color.CustomPink)})
         
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading:
+//                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
         
         .sheet(isPresented: $isSheetOpen){
             MakeGroupView()

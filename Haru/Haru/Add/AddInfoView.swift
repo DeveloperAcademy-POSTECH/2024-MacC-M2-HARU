@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct AddInfoView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
 
     
     @Binding var isSheetOpen: Bool
@@ -38,18 +38,10 @@ struct AddInfoView: View {
                 
             }
             .padding(.vertical, 20)
-            //                .padding(.leading, 0)
-            //                .padding(.trailing, 280)
-            //                .padding(.vertical, 0)
-            //                .background(Color(red: 0.47, green: 0.47, blue: 0.5).opacity(0.16))
-            //                .padding(.horizontal, 16)
-            //                .padding(.vertical, 0)
-            //                .frame(width: 393, height: 44, alignment: .center)
-            //                .background(.white)
+
             
             if let uiImage = UIImage(data: ImageData) {
                 Image(uiImage: uiImage)
-                
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200)
@@ -67,19 +59,18 @@ struct AddInfoView: View {
             
         }
         .padding(.horizontal, 16)
+
+        
         .navigationTitle("보관함")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar(content: {
-            ToolbarItem(placement: .navigationBarTrailing, content: {
-                NavigationLink(destination: SelectGroupView(isSheetOpen: $isSheetOpen, photo: $ImageData, date: $date)) {
-                    Text("다음")
-                        .foregroundColor(.black)
-                }
-            })
+        
+        .navigationBarItems(trailing: NavigationLink(destination: SelectGroupView(isSheetOpen: $isSheetOpen, photo: $ImageData, date: $date)) {
+            Text("다음")
+                .foregroundColor(.black)
         })
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading:
+//                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
         //        .navigationBarItems(trailing: )
         
     }

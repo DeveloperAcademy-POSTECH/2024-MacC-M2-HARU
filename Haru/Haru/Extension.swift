@@ -38,3 +38,36 @@ extension UserDefaults {
         return UserDefaults(suiteName: appGroupId)!
     }
 }
+
+
+//class AppDelegate: NSObject, UIApplicationDelegate {
+//
+//    func application(
+//        _ application: UIApplication,
+//        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+//    ) -> Bool {
+//        setBackButtonColor()
+//        return true
+//    }
+//}
+//
+//
+//
+//extension AppDelegate {
+//
+//    /// 백버튼의 타이틀을 clear 색상으로 바꾸고, tintColor를 mainTextColor로 바꾼다.
+//    private func setBackButtonColor() {
+//        let backButtonAppearance = UIBarButtonItemAppearance()
+//        let appearance = UINavigationBarAppearance()
+//
+//        backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+//        appearance.configureWithOpaqueBackground()
+//        appearance.backButtonAppearance = backButtonAppearance
+//        appearance.backgroundColor = UIColor(Color.gray)
+//
+//        UINavigationBar.appearance().standardAppearance = appearance
+//        UINavigationBar.appearance().compactAppearance = appearance
+//        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+//        UIBarButtonItem.appearance().tintColor = UIColor(Color.gray)
+//    }
+//}

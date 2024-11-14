@@ -59,9 +59,9 @@ struct AddView: View {
                 }
                 
             }
-            .onAppear{
-                ImageData = nil
-            }
+//            .onAppear{
+//                ImageData = nil
+//            }
             
             if let selectedImage = ImageData, let uiImage = UIImage(data: selectedImage) {
                 Image(uiImage: uiImage)
@@ -69,7 +69,7 @@ struct AddView: View {
                     .scaledToFit()
                     .frame(height: 300)
                 
-                NavigationLink(destination: AddInfoView(isSheetOpen: $isSheetOpen, ImageData: ImageData!)){
+                NavigationLink(destination: AddInfoView(isSheetOpen: $isSheetOpen, ImageData: ImageData!)) {
                     
                     
                     Text("사진 등록하기")
@@ -84,17 +84,18 @@ struct AddView: View {
         }
         .navigationTitle("보관함")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(leading:
-                                Image(systemName: "chevron.left") .onTapGesture { isSheetOpen = false })
-        
+//        .navigationBarItems(leading:
+//                                Image(systemName: "chevron.left") .onTapGesture { isSheetOpen = false })
+//        
         
         .task(id: selectedItem) {
             // 선택된 아이템에서 이미지 데이터 가져오기
             if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
-                
                 ImageData = data
             }
         }
+        
+        
     }
 }
 

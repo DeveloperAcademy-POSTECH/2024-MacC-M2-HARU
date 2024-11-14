@@ -10,7 +10,7 @@ import SwiftData
 
 struct SelectGroupView: View {
     @Environment(\.modelContext) var modelContext
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     
     @Binding var isSheetOpen: Bool
 
@@ -145,9 +145,9 @@ struct SelectGroupView: View {
             Text("다음")
                 .foregroundColor(.black)
         })
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading:
+//                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
         
         
         

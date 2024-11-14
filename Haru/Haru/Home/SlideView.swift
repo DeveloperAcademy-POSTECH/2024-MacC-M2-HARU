@@ -43,6 +43,8 @@ struct SlideView: View {
             HStack {
                 Button(action: previousImage) {
                     Image(systemName: "chevron.left")
+                        .foregroundColor(Color.CustomPink)
+
                 }
                 .disabled(currentIndex == 0)
                 
@@ -52,6 +54,8 @@ struct SlideView: View {
                 
                 Button(action: nextImage) {
                     Image(systemName: "chevron.right")
+                        .foregroundColor(Color.CustomPink)
+
                 }
                 .disabled(currentIndex == photoList.count - 1)
             }
