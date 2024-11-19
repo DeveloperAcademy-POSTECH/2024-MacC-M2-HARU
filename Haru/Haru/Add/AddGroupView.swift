@@ -1,5 +1,5 @@
 //
-//  SelectGroupView.swift
+//  AddGroupView.swift
 //  Haru
 //
 //  Created by 김은정 on 10/17/24.
@@ -8,14 +8,19 @@
 import SwiftUI
 import SwiftData
 
-struct SelectGroupView: View {
+struct AddGroupView: View {
     @Environment(\.modelContext) var modelContext
 //    @Environment(\.dismiss) var dismiss
     
     @Binding var isSheetOpen: Bool
 
-    @Binding var photo: Data
-    @Binding var date: Date
+//    @Binding var photo: Data
+//    @Binding var date: Date
+    
+    
+    @State var imageData: Data
+    @State var imageName: String
+    @State var date: Date
     
     
     @Query var groupList: [GroupInfo]
@@ -50,7 +55,7 @@ struct SelectGroupView: View {
             }
             .padding(.vertical, 20)
             
-            if let uiImage = UIImage(data: photo) {
+            if let uiImage = UIImage(data: imageData) {
                 Image(uiImage: uiImage)
                 
                     .resizable()
@@ -139,18 +144,13 @@ struct SelectGroupView: View {
         
         
         
-        .navigationTitle("보관함")
+        .navigationTitle("추가하기")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: NavigationLink(destination: AddImageTextView(isSheetOpen: $isSheetOpen, photo: $photo, date: $date, groupName: $groupName, groupMember: $groupMember)) {
+        .navigationBarItems(trailing: NavigationLink(destination: AddTextView(isSheetOpen: $isSheetOpen, imageData: imageData, imageName: imageName, date: date, groupName: $groupName, groupMember: $groupMember)) {
             Text("다음")
                 .foregroundColor(.black)
         })
-//        .navigationBarBackButtonHidden(true)
-//        .navigationBarItems(leading:
-//                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
-        
-        
-        
+ 
         
     }
     
@@ -167,13 +167,13 @@ struct SelectGroupView: View {
 
 
 
-struct SelectGroupView_Previews: PreviewProvider {
+struct AddGroupView_Previews: PreviewProvider {
     static var previews: some View {
         let sampleImage = UIImage(named: "4cut1") // 로컬 이미지 이름으로 변경
         let imageData = sampleImage?.pngData() ?? Data() // 이미지 데이터를 Data로 변환
         
         NavigationStack {
-            SelectGroupView(isSheetOpen: .constant(true), photo: .constant(imageData), date: .constant(Date()))
+            AddGroupView(isSheetOpen: .constant(true), imageData: imageData, imageName: "4cut", date: Date())
                 .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
         }
     }

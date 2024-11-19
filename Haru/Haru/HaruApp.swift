@@ -10,7 +10,10 @@ import SwiftData
 
 @main
 struct HaruApp: App {
+
     @StateObject var nm = NotificationManager.nm
+    
+
     
     var body: some Scene {
         
@@ -20,6 +23,7 @@ struct HaruApp: App {
                     nm.request_authorization()
                     nm.schedule_notification() // 추가
 
+
                 }
 
             
@@ -27,6 +31,8 @@ struct HaruApp: App {
         .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
 
     }
+    
+
     
     init() {
         let appearance = UINavigationBarAppearance()
@@ -40,6 +46,8 @@ struct HaruApp: App {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
+    
+    
     
 }
 

@@ -32,20 +32,18 @@ struct MLDataPickerView: View {
             
             DatePicker("시작일", selection: $startDate, displayedComponents: [.date])
                 .datePickerStyle(.compact)
-                .accentColor(Color.CustomPink)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.LightPink)
-                .cornerRadius(5)
+//                .padding(.horizontal, 8)
+//                .padding(.vertical, 4)
+//                .background(Color.LightPink)
+//                .cornerRadius(5)
             
 
             DatePicker("종료일", selection: $endDate, in: startDate...Calendar.current.date(byAdding: .month, value: 1, to: startDate)!, displayedComponents: [.date])
                 .datePickerStyle(.compact)
-                .accentColor(Color.CustomPink)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.LightPink)
-                .cornerRadius(5)
+//                .padding(.horizontal, 8)
+//                .padding(.vertical, 4)
+//                .background(Color.LightPink)
+//                .cornerRadius(5)
             Spacer()
         }
         .padding(.horizontal, 16)

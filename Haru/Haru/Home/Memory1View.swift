@@ -23,7 +23,7 @@ struct Memory1View: View {
     @State private var endingOffsetY: CGFloat = 0
     
     @Environment(\.modelContext) var modelContext
-//    @Environment(\.dismiss) var dismiss
+    //    @Environment(\.dismiss) var dismiss
     
     
     
@@ -97,20 +97,27 @@ struct Memory1View: View {
         }
         
         .navigationBarItems(trailing: Menu {
-            Button("수정", action: {})
+            NavigationLink(destination: EditDateView(photoInfo: $photoInfo, editDate: photoInfo.date)) {Text("날짜 수정")}
+            
+            NavigationLink(destination: EditGroupView(photoInfo: $photoInfo)) {Text("그룹 수정")} 
+            
+            NavigationLink(destination: EditMemoView(photoInfo: $photoInfo, place: photoInfo.place, text: photoInfo.text)) {Text("메모 수정")}
+            
             Button("삭제", action: {modelContext.delete(photoInfo)})
         } label: {Image(systemName: "ellipsis")
                 .foregroundColor(.customGray)
         })
         
-//        .navigationBarBackButtonHidden(true)
-//        .navigationBarItems(leading:
-//                                Image(systemName: "chevron.left") .onTapGesture {
-//            print("왜 안됨")
-///*            dismiss() */})
-        
-        
+        .toolbarBackground(.clear, for: .navigationBar)
+
     }
+    
+    //        .navigationBarBackButtonHidden(true)
+    //        .navigationBarItems(leading:
+    //                                Image(systemName: "chevron.left") .onTapGesture {
+    //            print("왜 안됨")
+    ///*            dismiss() */})
+    //}
     
     func loadImageAndColor()  {
         if let uiImage = UIImage(data: photoInfo.photo) {
@@ -164,7 +171,7 @@ struct Memory1View_Previews: PreviewProvider {
         let imageData = sampleImage?.pngData() ?? Data() // 이미지 데이터를 Data로 변환
         
         
-        let newInfo = PhotoInfo(photo: imageData, date: Date(), text:" ", groupName: "그룹1", groupMember: ["멤버1", "멤버2"])
+        let newInfo = PhotoInfo(imageName: "4cut", photo: imageData, date: Date(), place: " ", text:" ", groupName: "그룹1", groupMember: ["멤버1", "멤버2"])
         
         
         NavigationStack {

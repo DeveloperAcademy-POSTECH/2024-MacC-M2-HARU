@@ -1,23 +1,20 @@
 //
-//  MakeGroupView.swift
+//  EditGroupSetView.swift
 //  Haru
 //
-//  Created by 김은정 on 10/15/24.
+//  Created by 김은정 on 11/18/24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct MakeGroupView: View {
-//    @Binding var stack: NavigationPath
-    @Query var GroupList: [GroupInfo]
-
-
+struct EditGroupSetView: View {
+    @Binding var editGroup: GroupInfo
     
-    @State var groupName: String = ""
-    @State var memberList: [String] = []
+    @State var groupName: String
+    @State var memberList: [String]
     @State var memberName: String = ""
-    @Environment(\.modelContext) var modelContext
+
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -30,12 +27,9 @@ struct MakeGroupView: View {
                 Spacer()
                 
                 Button("완료") {
-                    print("d")
-                    
                     if groupName != "" && !memberList.isEmpty {
-                        let newGroup = GroupInfo(name: groupName, member: memberList)
-                        modelContext.insert(newGroup)
-                        print(GroupList)
+                        editGroup.name = groupName
+                        editGroup.member = memberList
                         dismiss()
                     }
                     else{
@@ -126,8 +120,6 @@ struct MakeGroupView: View {
     }
 }
 
-#Preview {
-    MakeGroupView()
-        .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
-
-}
+//#Preview {
+//    EditGroupSetView()
+//}

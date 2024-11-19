@@ -7,9 +7,14 @@
 
 import SwiftUI
 import SwiftData
+import Photos
 
 struct HomeView: View {
+    @Environment(\.modelContext) var modelContext
+
     @Query var photos: [PhotoInfo]
+    @Query var groups: [GroupInfo]
+
     
     @State var todayPhotoList: [PhotoInfo] = []
     
@@ -26,18 +31,22 @@ struct HomeView: View {
     @State var maxCount = 0
     
     @State var isOpen = false
-    
+
+    @State private var isAuthorized: Bool = false
+
     
     var body: some View {
         NavigationStack{
             VStack {
                 HStack {
-//                    Image("logo")
-//                        .resizable()
-//                        .scaledToFit()
-                    Text("하루네컷")
-                        .fontWeight(.bold)
-                        .font(.system(size: 30))
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 70)
+
+//                    Text("하루네컷")
+//                        .fontWeight(.bold)
+//                        .font(.system(size: 30))
                     Spacer()
                     Button {
                         todayPhotoList = recommendPhotos(photos: photos)
@@ -109,11 +118,36 @@ struct HomeView: View {
             .padding(.horizontal, 20)
 
         }
-        .tint(Color.customGray)
+        .tint(Color.CustomPink)
 
         .fullScreenCover(isPresented: $isSlide, content: {
             SlideView(photoList: $todayPhotoList)
         })
+        .onAppear {
+            requestPhotoLibraryAccess()
+            if groups.isEmpty {
+                settingValue()
+            }
+        }
+        
+
+        
+    }
+    func settingValue() {
+        modelContext.insert(GroupInfo(name: "기타", member: ["-"]))
+    }
+    
+    private func requestPhotoLibraryAccess() {
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { newStatus in
+                if newStatus == .authorized {
+                    isAuthorized = true
+                }
+            }
+        } else if status == .authorized {
+            isAuthorized = true
+        }
     }
     
     

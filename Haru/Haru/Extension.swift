@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 
 extension Color{
@@ -38,6 +39,42 @@ extension UserDefaults {
         return UserDefaults(suiteName: appGroupId)!
     }
 }
+
+extension UIApplication {
+    func hideKeyboard() {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        guard let window = windowScene?.windows.first else { return }
+//        guard let window = windows.first else { return }
+        let tapRecognizer = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
+        tapRecognizer.cancelsTouchesInView = false
+        tapRecognizer.delegate = self
+        window.addGestureRecognizer(tapRecognizer)
+    }
+ }
+ 
+extension UIApplication: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+}
+
+// 키보드 높이를 구독하는 Publisher
+extension Publishers {
+    static var keyboardHeight: AnyPublisher<CGFloat, Never> {
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
+            .merge(with: NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification))
+            .map { notification -> CGFloat in
+                if let userInfo = notification.userInfo,
+                   let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                    return notification.name == UIResponder.keyboardWillShowNotification ? frame.height : 0
+                }
+                return 0
+            }
+            .eraseToAnyPublisher()
+    }
+}
+
 
 
 //class AppDelegate: NSObject, UIApplicationDelegate {

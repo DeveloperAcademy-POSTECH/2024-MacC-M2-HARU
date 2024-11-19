@@ -1,5 +1,5 @@
 //
-//  AddInfoView.swift
+//  AddDateView.swift
 //  Haru
 //
 //  Created by 김은정 on 9/19/24.
@@ -8,18 +8,17 @@
 import SwiftUI
 import SwiftData
 
-struct AddInfoView: View {
+struct AddDateView: View {
 //    @Environment(\.dismiss) var dismiss
 
     
     @Binding var isSheetOpen: Bool
     
     
-    @State var ImageData: Data
-//    @Binding var date: Date
     
-    
-    @State var date: Date = Date()
+    @State var imageData: Data
+    @State var imageName: String
+    @State var date: Date
 
     
     
@@ -40,7 +39,7 @@ struct AddInfoView: View {
             .padding(.vertical, 20)
 
             
-            if let uiImage = UIImage(data: ImageData) {
+            if let uiImage = UIImage(data: imageData) {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
@@ -61,29 +60,25 @@ struct AddInfoView: View {
         .padding(.horizontal, 16)
 
         
-        .navigationTitle("보관함")
+        .navigationTitle("추가하기")
         .navigationBarTitleDisplayMode(.inline)
         
-        .navigationBarItems(trailing: NavigationLink(destination: SelectGroupView(isSheetOpen: $isSheetOpen, photo: $ImageData, date: $date)) {
+        .navigationBarItems(trailing: NavigationLink(destination: AddGroupView(isSheetOpen: $isSheetOpen, imageData: imageData, imageName: imageName, date: date)) {
             Text("다음")
                 .foregroundColor(.black)
         })
-//        .navigationBarBackButtonHidden(true)
-//        .navigationBarItems(leading:
-//                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
-        //        .navigationBarItems(trailing: )
         
     }
     
 }
 
-struct AddInfoView_Previews: PreviewProvider {
+struct AddDateView_Previews: PreviewProvider {
     static var previews: some View {
         let sampleImage = UIImage(named: "4cut1") // 로컬 이미지 이름으로 변경
         let imageData = sampleImage?.pngData() ?? Data() // 이미지 데이터를 Data로 변환
         
         NavigationStack {
-            AddInfoView(isSheetOpen: .constant(true), ImageData: imageData)
+            AddDateView(isSheetOpen: .constant(true), imageData: imageData, imageName: "4cutIMG", date: Date())
                 .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
             
         }

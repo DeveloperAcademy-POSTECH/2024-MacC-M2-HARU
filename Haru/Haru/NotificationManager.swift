@@ -35,12 +35,12 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
         content.body = "오늘 하루의 네컷을 확인하세요"
         content.sound = UNNotificationSound.default
         
-        let dateComponents = DateComponents(hour: 9, minute: 23)
+        let dateComponents = DateComponents(hour: 10, minute: 50)
         
         // trigger
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "night", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {

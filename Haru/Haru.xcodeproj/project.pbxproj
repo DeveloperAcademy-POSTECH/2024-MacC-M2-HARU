@@ -14,12 +14,12 @@
 		DE17F5242C9BACF800008884 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE17F5232C9BACF800008884 /* Preview Assets.xcassets */; };
 		DE17F52B2C9BAD1000008884 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F52A2C9BAD1000008884 /* HomeView.swift */; };
 		DE17F52D2C9BB35D00008884 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F52C2C9BB35D00008884 /* AddView.swift */; };
-		DE17F52F2C9BBA6800008884 /* AddInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F52E2C9BBA6800008884 /* AddInfoView.swift */; };
+		DE17F52F2C9BBA6800008884 /* AddDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F52E2C9BBA6800008884 /* AddDateView.swift */; };
 		DE17F5332C9BBCF000008884 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F5322C9BBCF000008884 /* InfoModel.swift */; };
 		DE2206902CB8B8E7007A52FD /* cutClassification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DE22068F2CB8B8E7007A52FD /* cutClassification.mlmodel */; };
 		DE3B15702CACCB9A00BC493D /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B156F2CACCB9A00BC493D /* PhotoPickerView.swift */; };
 		DE3B15742CACEF4900BC493D /* PhotoInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B15732CACEF4900BC493D /* PhotoInfoView.swift */; };
-		DE405E732CBE152600B38F06 /* MakeGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE405E722CBE152600B38F06 /* MakeGroupView.swift */; };
+		DE405E732CBE152600B38F06 /* MakeGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE405E722CBE152600B38F06 /* MakeGroupSetView.swift */; };
 		DE47CEE12CCB1AAB0067B02D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE47CEE02CCB1AAB0067B02D /* WidgetKit.framework */; };
 		DE47CEE32CCB1AAB0067B02D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE47CEE22CCB1AAB0067B02D /* SwiftUI.framework */; };
 		DE47CEE62CCB1AAB0067B02D /* HaruWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47CEE52CCB1AAB0067B02D /* HaruWidgetBundle.swift */; };
@@ -28,21 +28,25 @@
 		DE47CEEC2CCB1AAB0067B02D /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47CEEB2CCB1AAB0067B02D /* AppIntent.swift */; };
 		DE47CEEE2CCB1AAC0067B02D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE47CEED2CCB1AAC0067B02D /* Assets.xcassets */; };
 		DE47CEF22CCB1AAC0067B02D /* HaruWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DE47CEDE2CCB1AAB0067B02D /* HaruWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		DE5289F92CD9C7AF00E11186 /* AddImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5289F82CD9C7AF00E11186 /* AddImageTextView.swift */; };
+		DE5289F92CD9C7AF00E11186 /* AddTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5289F82CD9C7AF00E11186 /* AddTextView.swift */; };
 		DE753D002CB4CF2300F691A0 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE753CFF2CB4CF2300F691A0 /* SettingView.swift */; };
 		DE753D022CB4D2AC00F691A0 /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE753D012CB4D2AC00F691A0 /* MemoryView.swift */; };
 		DE7D81552CA100C300A470DD /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D81542CA100C300A470DD /* LibraryView.swift */; };
 		DE7D81572CA1075100A470DD /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D81562CA1075100A470DD /* SwiftUIView.swift */; };
+		DE8A7B032CEB31C40023FADD /* EditGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8A7B022CEB31C40023FADD /* EditGroupSetView.swift */; };
 		DE9A402D2CDEF3AE00B101CF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */; };
 		DE9A40312CDF02CF00B101CF /* MLDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A40302CDF02CF00B101CF /* MLDataPickerView.swift */; };
 		DEA7BA132CC60D2F00618088 /* Memory1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA7BA122CC60D2F00618088 /* Memory1View.swift */; };
 		DEB693EA2CC1F6AB00F7168F /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB693E92CC1F6AB00F7168F /* SlideView.swift */; };
 		DEC1205E2CC0A2690052E1E4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205D2CC0A2690052E1E4 /* Extension.swift */; };
-		DEC120602CC0E0450052E1E4 /* SelectGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205F2CC0E0450052E1E4 /* SelectGroupView.swift */; };
+		DEC120602CC0E0450052E1E4 /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205F2CC0E0450052E1E4 /* AddGroupView.swift */; };
 		DED8F0F52CB8D3C000732890 /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */; };
 		DEEB11F02CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
 		DEEB11F12CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
 		DEF5725B2CE583670042C68A /* 뽑기통.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF5725A2CE583670042C68A /* 뽑기통.png */; };
+		DEF5725F2CE5A6AE0042C68A /* EditGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5725E2CE5A6AE0042C68A /* EditGroupView.swift */; };
+		DEF572612CE5A6BA0042C68A /* EditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF572602CE5A6BA0042C68A /* EditDateView.swift */; };
+		DEF572632CE5A6C80042C68A /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF572622CE5A6C80042C68A /* EditMemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,12 +82,12 @@
 		DE17F5232C9BACF800008884 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DE17F52A2C9BAD1000008884 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DE17F52C2C9BB35D00008884 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
-		DE17F52E2C9BBA6800008884 /* AddInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoView.swift; sourceTree = "<group>"; };
+		DE17F52E2C9BBA6800008884 /* AddDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateView.swift; sourceTree = "<group>"; };
 		DE17F5322C9BBCF000008884 /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
 		DE22068F2CB8B8E7007A52FD /* cutClassification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = cutClassification.mlmodel; sourceTree = "<group>"; };
 		DE3B156F2CACCB9A00BC493D /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		DE3B15732CACEF4900BC493D /* PhotoInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoView.swift; sourceTree = "<group>"; };
-		DE405E722CBE152600B38F06 /* MakeGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeGroupView.swift; sourceTree = "<group>"; };
+		DE405E722CBE152600B38F06 /* MakeGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeGroupSetView.swift; sourceTree = "<group>"; };
 		DE47CEDE2CCB1AAB0067B02D /* HaruWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HaruWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE47CEE02CCB1AAB0067B02D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		DE47CEE22CCB1AAB0067B02D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -93,22 +97,27 @@
 		DE47CEEB2CCB1AAB0067B02D /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		DE47CEED2CCB1AAC0067B02D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE47CEEF2CCB1AAC0067B02D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE5289F82CD9C7AF00E11186 /* AddImageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageTextView.swift; sourceTree = "<group>"; };
+		DE5289F82CD9C7AF00E11186 /* AddTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTextView.swift; sourceTree = "<group>"; };
 		DE753CFF2CB4CF2300F691A0 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		DE753D012CB4D2AC00F691A0 /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
 		DE7D81542CA100C300A470DD /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		DE7D81562CA1075100A470DD /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		DE8A7B022CEB31C40023FADD /* EditGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupSetView.swift; sourceTree = "<group>"; };
+		DE9955BB2CEAF31A00969B8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		DE9A40302CDF02CF00B101CF /* MLDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDataPickerView.swift; sourceTree = "<group>"; };
 		DEA7BA122CC60D2F00618088 /* Memory1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory1View.swift; sourceTree = "<group>"; };
 		DEB693E92CC1F6AB00F7168F /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		DEC1205D2CC0A2690052E1E4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		DEC1205F2CC0E0450052E1E4 /* SelectGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGroupView.swift; sourceTree = "<group>"; };
+		DEC1205F2CC0E0450052E1E4 /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
 		DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
 		DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4cut1.jpg; sourceTree = "<group>"; };
 		DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Haru.entitlements; sourceTree = "<group>"; };
 		DEEB11F32CD1DDA9006BF6F0 /* HaruWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HaruWidgetExtension.entitlements; sourceTree = "<group>"; };
 		DEF5725A2CE583670042C68A /* 뽑기통.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "뽑기통.png"; sourceTree = "<group>"; };
+		DEF5725E2CE5A6AE0042C68A /* EditGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupView.swift; sourceTree = "<group>"; };
+		DEF572602CE5A6BA0042C68A /* EditDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateView.swift; sourceTree = "<group>"; };
+		DEF572622CE5A6C80042C68A /* EditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +163,7 @@
 		DE17F51B2C9BACF800008884 /* Haru */ = {
 			isa = PBXGroup;
 			children = (
+				DE9955BB2CEAF31A00969B8E /* Info.plist */,
 				DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */,
 				DE17F51C2C9BACF800008884 /* HaruApp.swift */,
 				DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */,
@@ -211,9 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				DE17F52C2C9BB35D00008884 /* AddView.swift */,
-				DE17F52E2C9BBA6800008884 /* AddInfoView.swift */,
-				DEC1205F2CC0E0450052E1E4 /* SelectGroupView.swift */,
-				DE5289F82CD9C7AF00E11186 /* AddImageTextView.swift */,
+				DE17F52E2C9BBA6800008884 /* AddDateView.swift */,
+				DEC1205F2CC0E0450052E1E4 /* AddGroupView.swift */,
+				DE5289F82CD9C7AF00E11186 /* AddTextView.swift */,
 				DE9A40302CDF02CF00B101CF /* MLDataPickerView.swift */,
 				DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */,
 			);
@@ -226,6 +236,9 @@
 				DEB693E92CC1F6AB00F7168F /* SlideView.swift */,
 				DEA7BA122CC60D2F00618088 /* Memory1View.swift */,
 				DE16EC522CDD9E9E0089F064 /* MemoryInfoView.swift */,
+				DEF572602CE5A6BA0042C68A /* EditDateView.swift */,
+				DEF5725E2CE5A6AE0042C68A /* EditGroupView.swift */,
+				DEF572622CE5A6C80042C68A /* EditMemoView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -243,7 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				DE753CFF2CB4CF2300F691A0 /* SettingView.swift */,
-				DE405E722CBE152600B38F06 /* MakeGroupView.swift */,
+				DE405E722CBE152600B38F06 /* MakeGroupSetView.swift */,
+				DE8A7B022CEB31C40023FADD /* EditGroupSetView.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -352,19 +366,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEF572612CE5A6BA0042C68A /* EditDateView.swift in Sources */,
 				DE7D81552CA100C300A470DD /* LibraryView.swift in Sources */,
 				DE17F52D2C9BB35D00008884 /* AddView.swift in Sources */,
 				DEC1205E2CC0A2690052E1E4 /* Extension.swift in Sources */,
 				DE3B15702CACCB9A00BC493D /* PhotoPickerView.swift in Sources */,
-				DE5289F92CD9C7AF00E11186 /* AddImageTextView.swift in Sources */,
+				DE5289F92CD9C7AF00E11186 /* AddTextView.swift in Sources */,
 				DE7D81572CA1075100A470DD /* SwiftUIView.swift in Sources */,
-				DE405E732CBE152600B38F06 /* MakeGroupView.swift in Sources */,
+				DE405E732CBE152600B38F06 /* MakeGroupSetView.swift in Sources */,
 				DE17F52B2C9BAD1000008884 /* HomeView.swift in Sources */,
 				DE9A402D2CDEF3AE00B101CF /* NotificationManager.swift in Sources */,
+				DE8A7B032CEB31C40023FADD /* EditGroupSetView.swift in Sources */,
 				DE17F51F2C9BACF800008884 /* ContentView.swift in Sources */,
 				DE16EC532CDD9E9E0089F064 /* MemoryInfoView.swift in Sources */,
 				DE17F51D2C9BACF800008884 /* HaruApp.swift in Sources */,
-				DE17F52F2C9BBA6800008884 /* AddInfoView.swift in Sources */,
+				DE17F52F2C9BBA6800008884 /* AddDateView.swift in Sources */,
 				DE2206902CB8B8E7007A52FD /* cutClassification.mlmodel in Sources */,
 				DEA7BA132CC60D2F00618088 /* Memory1View.swift in Sources */,
 				DE753D002CB4CF2300F691A0 /* SettingView.swift in Sources */,
@@ -372,9 +388,11 @@
 				DE17F5332C9BBCF000008884 /* InfoModel.swift in Sources */,
 				DE753D022CB4D2AC00F691A0 /* MemoryView.swift in Sources */,
 				DED8F0F52CB8D3C000732890 /* CustomImagePicker.swift in Sources */,
+				DEF5725F2CE5A6AE0042C68A /* EditGroupView.swift in Sources */,
 				DE3B15742CACEF4900BC493D /* PhotoInfoView.swift in Sources */,
+				DEF572632CE5A6C80042C68A /* EditMemoView.swift in Sources */,
 				DE9A40312CDF02CF00B101CF /* MLDataPickerView.swift in Sources */,
-				DEC120602CC0E0450052E1E4 /* SelectGroupView.swift in Sources */,
+				DEC120602CC0E0450052E1E4 /* AddGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +550,8 @@
 				DEVELOPMENT_TEAM = 8W62FS2UWY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Haru/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -564,6 +584,8 @@
 				DEVELOPMENT_TEAM = 8W62FS2UWY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Haru/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

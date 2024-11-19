@@ -26,24 +26,42 @@ struct MemoryInfoView: View {
                     .cornerRadius(2.5)
                 
                 VStack{
-                    Text(photoInfo.text)
+                    Text("\(formattedDate(photoInfo.date))")
+                        .font(.headline)
+                        .padding(.bottom, 5)
                     
-                    Text("\(photoInfo.date)")
-                    Text("\(photoInfo.groupName)")
+                    
+                    Text("\(photoInfo.place)에서 \(photoInfo.groupName)")
+                        .font(.subheadline)
+                        .padding(.bottom, 5)                    
+                    
+                    
+//                    Text("\(photoInfo.groupName)")
+//                        .font(.subheadline)
+//                        .padding(.bottom, 5)
+
                     
                     HStack{
                         ForEach(photoInfo.groupMember, id: \.self) { member in
                             Text(member)
+                                .font(.subheadline)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 4)
                                 .background(Color.LightPink)
                                 .cornerRadius(10)
                         }
                     }
+                    
+                    
+                    Text(photoInfo.text)
+                        .font(.subheadline)
+                        .padding(.bottom, 5)
+                    
+                    
                     Spacer()
                     
                 }
-                .padding(.top, 30)
+                .padding(.top, 45)
             }
             .padding()
 
@@ -51,6 +69,16 @@ struct MemoryInfoView: View {
         }
 
     }
+    
+    
+    func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일 (E)"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter.string(from: date)
+    }
+    
+
 }
 //
 //#Preview {
