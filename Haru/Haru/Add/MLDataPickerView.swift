@@ -10,6 +10,8 @@ import SwiftUI
 struct MLDataPickerView: View {
 //    @Environment(\.dismiss) var dismiss
     
+    @Binding var isSheetOpen: Bool
+
     @State var startDate: Date = Date()
     @State var endDate: Date = Date()
 
@@ -47,11 +49,11 @@ struct MLDataPickerView: View {
             Spacer()
         }
         .padding(.horizontal, 16)
-        .navigationTitle("보관함")
+        .navigationTitle("검색하기")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing, content: {
-                NavigationLink(destination: CustomImagePicker(startDate: $startDate, endDate: $endDate)) {
+                NavigationLink(destination: CustomImagePicker(isSheetOpen: $isSheetOpen, startDate: $startDate, endDate: $endDate)) {
                     Text("다음")
                         .foregroundColor(.black)
                 }
@@ -69,6 +71,6 @@ struct MLDataPickerView: View {
 
 #Preview {
     NavigationStack{
-        MLDataPickerView()
+        MLDataPickerView(isSheetOpen: .constant(true))
     }
 }

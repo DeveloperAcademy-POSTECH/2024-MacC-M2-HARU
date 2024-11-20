@@ -7,48 +7,72 @@
 
 import SwiftUI
 import SwiftData
+import BackgroundTasks
 
 @main
 struct HaruApp: App {
-
     @StateObject var nm = NotificationManager.nm
-    
+    @StateObject private var appDelegate = AppDelegate()
 
-    
     var body: some Scene {
-        
         WindowGroup {
-                HomeView()
+            HomeView()
                 .onAppear {
                     nm.request_authorization()
-                    nm.schedule_notification() // 추가
-
-
+                    nm.schedule_notification()
                 }
-
-            
         }
         .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
-
     }
-    
-
-    
-    init() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-//        appearance.backgroundColor = .clear // 배경색 설정
-        appearance.shadowColor = UIColor.clear
-
-        // 백 버튼 텍스트 색상을 투명하게 설정하여 숨김
-        appearance.backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
-
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
-    
-    
-    
 }
 
+class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
+    override init() {
+        super.init()
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.Haru.updatePhotos", using: nil) { task in
+            print("Background task registered")
+            self.handleAppRefresh(task: task as! BGAppRefreshTask)
+        }
+        scheduleAppRefresh()
+    }
 
+    func handleAppRefresh(task: BGAppRefreshTask) {
+        print("Handling background refresh task")
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        queue.addOperation {
+            NotificationCenter.default.post(name: .updatePhotos, object: nil)
+            task.setTaskCompleted(success: true)
+        }
+        task.expirationHandler = {
+            queue.cancelAllOperations()
+        }
+    }
+
+    func scheduleAppRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: "com.Haru.updatePhotos")
+        let calendar = Calendar.current
+        let now = Date()
+        
+        var nextDateComponents = calendar.dateComponents([.year, .month, .day], from: now)
+        nextDateComponents.hour = 21
+        nextDateComponents.minute = 0
+        
+        if let nextDate = calendar.date(from: nextDateComponents), nextDate <= now {
+            nextDateComponents.day! += 1
+        }
+        
+        guard let nextExecutionDate = calendar.date(from: nextDateComponents) else {
+            return
+        }
+        
+        request.earliestBeginDate = nextExecutionDate
+        
+        do {
+            try BGTaskScheduler.shared.submit(request)
+            print("Scheduled background task for \(nextExecutionDate)")
+        } catch {
+            print("Could not schedule app refresh: \(error)")
+        }
+    }
+}

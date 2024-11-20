@@ -57,10 +57,6 @@ struct LibraryView: View {
         .navigationBarItems(trailing:
                                 Button { isSheetOpen = true } label: {Image(systemName: "plus") .foregroundColor(Color.CustomPink)})
         
-//        .navigationBarBackButtonHidden(true)
-//        .navigationBarItems(leading:
-//                                Image(systemName: "chevron.left") .onTapGesture { dismiss() })
-        
         .fullScreenCover(isPresented: $isSheetOpen, content: {
             NavigationStack {
                 AddView(isSheetOpen: $isSheetOpen)

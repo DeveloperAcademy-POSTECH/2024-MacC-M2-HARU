@@ -23,7 +23,12 @@ struct SlideView: View {
                 HStack {
                     Spacer()
                     Menu {
-                        Button("수정", action: {})
+                        NavigationLink(destination: EditDateView(photoInfo: $photoList[currentIndex], editDate: photoList[currentIndex].date)) {Text("날짜 수정")}
+                        
+                        NavigationLink(destination: EditGroupView(photoInfo: $photoList[currentIndex])) {Text("그룹 수정")}
+                        
+                        NavigationLink(destination: EditMemoView(photoInfo: $photoList[currentIndex], place: photoList[currentIndex].place, text: photoList[currentIndex].text)) {Text("메모 수정")}
+                        
                         Button("삭제", action: {modelContext.delete(photoList[currentIndex])})
                     } label: {Image(systemName: "ellipsis")
                             .foregroundColor(.customGray)

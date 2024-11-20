@@ -11,51 +11,38 @@ import Photos
 
 struct HomeView: View {
     @Environment(\.modelContext) var modelContext
-
+    
     @Query var photos: [PhotoInfo]
     @Query var groups: [GroupInfo]
-
+    
     
     @State var todayPhotoList: [PhotoInfo] = []
     
     @State var isSlide = false
-//    @Environment(\.dismiss) var dismiss
-    
-    //    var currentSelectedGlobalTime = "Africa/Algiers"
-    //    UserDefaults.shared.set(currentSeletedGlobalTime, forKey: "timezone")
-    
-    
-    //    init(){
-    //        updateImageIfNeeded()
-    //    }
+
     @State var maxCount = 0
     
-    @State var isOpen = false
-
+    
     @State private var isAuthorized: Bool = false
+    
+    @State private var showAlert: Bool = false
+    
+    
+    @AppStorage("isOpen") private var isOpen = false
 
     
     var body: some View {
         NavigationStack{
-            VStack {
-                HStack {
-                    Image("logo")
+            VStack(spacing: 30) {
+                HStack(alignment: .center) {
+                    Image("TextLogo")
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 70)
-
-//                    Text("하루네컷")
-//                        .fontWeight(.bold)
-//                        .font(.system(size: 30))
-                    Spacer()
-                    Button {
-                        todayPhotoList = recommendPhotos(photos: photos)
-                    } label: {
-                        Image(systemName: "arrow.clockwise")
-                            .foregroundColor(.customGray)
-                            .font(.system(size: 20))
-                    }
+                        .frame(height: 60)
+                        .padding(.leading, 10)
                     
+                    Spacer()
+
                     NavigationLink(destination: LibraryView()) {
                         Image(systemName: "photo.fill")
                             .foregroundColor(.customGray)
@@ -68,14 +55,13 @@ struct HomeView: View {
                             .font(.system(size: 18))
                     }
                 }
-                .padding(.top, 30)
+                .padding(.top, 20)
                 
-//                Spacer()
+                //                Spacer()
                 
                 ZStack {
                     Rectangle()
                         .foregroundColor(.clear)
-                        .frame(width: 336, height: 423)
                         .background(.white)
                         .cornerRadius(25)
                         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 0)
@@ -86,7 +72,9 @@ struct HomeView: View {
                                 Image(uiImage: uiImage)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: 336)
+                                //                                    .frame(height: 336)
+                                    .padding(40)
+                                
                             }
                         }
                     }
@@ -95,12 +83,12 @@ struct HomeView: View {
                         Image("뽑기통")
                             .resizable()
                             .scaledToFit()
-                            .frame(height: 500)
+                        //                            .frame(height: 500)
                         
                     }
-
+                    
                 }
-                .frame(height: 500)
+                .frame(width: 336, height: 423)
                 .padding(.vertical, 20)
                 
                 Text("오늘의 캡슐")
@@ -109,32 +97,61 @@ struct HomeView: View {
                     .background(Color.CustomPink)
                     .cornerRadius(20)
                     .onTapGesture {
-                        isSlide = true
-                        isOpen = true
+                        if todayPhotoList.isEmpty
+                        { showAlert = true }
+                        else{
+                            isSlide = true
+                            isOpen = true
+                        }
                     }
                 
                 Spacer()
             }
             .padding(.horizontal, 20)
-
+            .padding(.vertical, 30)
+            
         }
         .tint(Color.CustomPink)
-
+        
         .fullScreenCover(isPresented: $isSlide, content: {
             SlideView(photoList: $todayPhotoList)
         })
-        .onAppear {
-            requestPhotoLibraryAccess()
-            if groups.isEmpty {
-                settingValue()
-            }
+        
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("보관함이 비어있습니다."),
+                message: Text("네컷사진을 추가해주세요"),
+                dismissButton: .default(Text("나가기"))
+            )
         }
         
+        .onAppear {
+             requestPhotoLibraryAccess()
+             if groups.isEmpty {
+                 settingValue()
+             }
+             // NotificationCenter에 옵저버 추가
+             NotificationCenter.default.addObserver(forName: .updatePhotos, object: nil, queue: .main) { _ in
+                 updatePhotos()
+             }
+         }
+         .onDisappear {
+             NotificationCenter.default.removeObserver(self, name: .updatePhotos, object: nil)
+         }
 
         
+        
+        
     }
+    
+    
     func settingValue() {
         modelContext.insert(GroupInfo(name: "기타", member: ["-"]))
+    }
+    
+    private func updatePhotos() {
+        todayPhotoList = recommendPhotos(photos: photos)
+        isOpen = false
     }
     
     private func requestPhotoLibraryAccess() {
@@ -152,15 +169,17 @@ struct HomeView: View {
     
     
     
-    //    private func updateImageIfNeeded() {
-    //        let calendar = Calendar.current
-    //        let currentHour = calendar.component(.hour, from: Date())
-    //
-    //        // 현재 시간이 21시라면
-    //        if currentHour == 21 {
-    //            currentImage = images.randomElement() ?? ""
-    //        }
-    //    }
+    func updateImageIfNeeded() {
+        let calendar = Calendar.current
+        let currentHour = calendar.component(.hour, from: Date())
+        
+        // 현재 시간이 21시라면
+        if currentHour == 21 {
+            todayPhotoList = recommendPhotos(photos: photos)
+            isOpen = false
+            
+        }
+    }
     
     // 사진 추천
     func recommendPhotos(photos: [PhotoInfo]) -> [PhotoInfo] {
@@ -340,6 +359,8 @@ struct HomeView: View {
         return similarities.prefix(maxCount).map { $0.photo }
     }
 }
+
+
 
 
 

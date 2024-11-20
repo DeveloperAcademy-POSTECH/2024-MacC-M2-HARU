@@ -12,6 +12,9 @@ import CoreML
 import Vision
 
 struct CustomImagePicker: View {
+    @Binding var isSheetOpen: Bool
+    
+    
     @State private var assets: [PHAsset] = []
     @State private var selectedAssets: [PHAsset] = [] // 선택된 사진 배열
     @State private var currentIndex = 0
@@ -44,15 +47,16 @@ struct CustomImagePicker: View {
                     }
                     .padding()
                 }
-                .navigationTitle("사진 찾기")
+                .navigationTitle("검색하기")
                 
                 Button(action: saveSelectedPhotos) {
                     Text("저장하기")
                         .font(.headline)
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.CustomPink)
                         .foregroundColor(.white)
                         .cornerRadius(10)
+                    
                 }
                 .padding()
                 .disabled(selectedAssets.isEmpty) // 선택된 사진이 없으면 비활성화
@@ -149,6 +153,7 @@ struct CustomImagePicker: View {
                 }
             }
         }
+        isSheetOpen = false
     }
     
     //    private func isImageNameDuplicate(_ imageName: String) -> Bool {
@@ -288,7 +293,7 @@ struct ImageCell: View {
                     .cornerRadius(8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(isSelected ? Color.blue : Color.clear, lineWidth: 4)
+                            .stroke(isSelected ? Color.CustomPink : Color.clear, lineWidth: 4)
                     )
                     .onTapGesture {
                         onSelect() // 사진 선택 시 호출
@@ -328,6 +333,6 @@ struct ImageCell: View {
 // Preview
 struct CustomImagePicker_Previews: PreviewProvider {
     static var previews: some View {
-        CustomImagePicker(startDate: .constant(Date()), endDate: .constant(Date()))
+        CustomImagePicker(isSheetOpen: .constant(true), startDate: .constant(Date()), endDate: .constant(Date()))
     }
 }

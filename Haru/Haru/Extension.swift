@@ -77,6 +77,11 @@ extension Publishers {
 
 
 
+extension Notification.Name {
+    static let updatePhotos = Notification.Name("updatePhotos")
+}
+
+
 //class AppDelegate: NSObject, UIApplicationDelegate {
 //
 //    func application(

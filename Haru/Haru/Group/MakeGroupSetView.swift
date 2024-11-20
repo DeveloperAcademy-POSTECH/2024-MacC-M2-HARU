@@ -9,17 +9,17 @@ import SwiftUI
 import SwiftData
 
 struct MakeGroupView: View {
-//    @Binding var stack: NavigationPath
+    //    @Binding var stack: NavigationPath
     @Query var GroupList: [GroupInfo]
-
-
+    
+    
     
     @State var groupName: String = ""
     @State var memberList: [String] = []
     @State var memberName: String = ""
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
-
+    
     var body: some View {
         
         VStack(spacing: 20){
@@ -38,24 +38,24 @@ struct MakeGroupView: View {
                     }
                     else{
                         print("확인하셈")
-
+                        
                     }
                 }
             }
-                
-                VStack{
+            
+            VStack{
                 TextField("groupName", text: $groupName)
                     .scrollContentBackground(.hidden)
-
+                
             }
             .padding(.horizontal, 16)
             .frame(maxWidth: .infinity, maxHeight: 44)
             .background(Color.LightPink)
             .cornerRadius(10)
-
-
-
-
+            
+            
+            
+            
             HStack {
                 TextField("Add new member", text: $memberName)
                     .scrollContentBackground(.hidden)
@@ -81,35 +81,35 @@ struct MakeGroupView: View {
             .frame(maxWidth: .infinity, maxHeight: 44)
             .background(Color.LightPink)
             .cornerRadius(10)
-
-                
+            
+            
             HStack{
                 ForEach(memberList, id: \.self) { member in
                     HStack(spacing: 6){
                         Text(member)
-
+                        
                         Button(action: {
                             deleteMember(member)
                         }) {
                             Image(systemName: "xmark.circle.fill")
                                 .font(.system(size: 15))
-
+                            
                                 .foregroundColor(.CustomPink)
                         }
                     }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 6)
-                        .background(Color.LightPink)
-                        .cornerRadius(10)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 6)
+                    .background(Color.LightPink)
+                    .cornerRadius(10)
                 }
             }
-
+            
             Spacer()
         }
         .padding(16)
         .presentationDetents([.medium])
         .presentationDragIndicator(.visible)
-
+        
         
     }
     
@@ -127,5 +127,5 @@ struct MakeGroupView: View {
 #Preview {
     MakeGroupView()
         .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
-
+    
 }

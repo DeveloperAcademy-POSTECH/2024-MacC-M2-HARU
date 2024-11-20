@@ -23,7 +23,7 @@ struct Memory1View: View {
     @State private var endingOffsetY: CGFloat = 0
     
     @Environment(\.modelContext) var modelContext
-    //    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     
     
     
@@ -103,7 +103,8 @@ struct Memory1View: View {
             
             NavigationLink(destination: EditMemoView(photoInfo: $photoInfo, place: photoInfo.place, text: photoInfo.text)) {Text("메모 수정")}
             
-            Button("삭제", action: {modelContext.delete(photoInfo)})
+            Button("삭제", action: {modelContext.delete(photoInfo);dismiss()})
+
         } label: {Image(systemName: "ellipsis")
                 .foregroundColor(.customGray)
         })

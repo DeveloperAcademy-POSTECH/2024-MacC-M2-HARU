@@ -38,7 +38,7 @@ struct SettingView: View {
                                     selectedGroup = groupInfo
                                     isEdit = true
                                 }
-                            Image(systemName: "xmark")
+                            Image(systemName: "trash.fill")
                                 .onTapGesture {
                                     selectedGroup = groupInfo
                                     showAlert = true

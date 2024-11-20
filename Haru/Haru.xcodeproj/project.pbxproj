@@ -20,6 +20,7 @@
 		DE3B15702CACCB9A00BC493D /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B156F2CACCB9A00BC493D /* PhotoPickerView.swift */; };
 		DE3B15742CACEF4900BC493D /* PhotoInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B15732CACEF4900BC493D /* PhotoInfoView.swift */; };
 		DE405E732CBE152600B38F06 /* MakeGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE405E722CBE152600B38F06 /* MakeGroupSetView.swift */; };
+		DE42D8A92CEC2AF700492449 /* TextLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DE42D8A82CEC2AF700492449 /* TextLogo.png */; };
 		DE47CEE12CCB1AAB0067B02D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE47CEE02CCB1AAB0067B02D /* WidgetKit.framework */; };
 		DE47CEE32CCB1AAB0067B02D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE47CEE22CCB1AAB0067B02D /* SwiftUI.framework */; };
 		DE47CEE62CCB1AAB0067B02D /* HaruWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47CEE52CCB1AAB0067B02D /* HaruWidgetBundle.swift */; };
@@ -40,6 +41,8 @@
 		DEB693EA2CC1F6AB00F7168F /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB693E92CC1F6AB00F7168F /* SlideView.swift */; };
 		DEC1205E2CC0A2690052E1E4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205D2CC0A2690052E1E4 /* Extension.swift */; };
 		DEC120602CC0E0450052E1E4 /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205F2CC0E0450052E1E4 /* AddGroupView.swift */; };
+		DED7520C2CED7A07006F76D8 /* capsule.png in Resources */ = {isa = PBXBuildFile; fileRef = DED7520B2CED7A07006F76D8 /* capsule.png */; };
+		DED7520E2CED89C0006F76D8 /* AppDeligate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED7520D2CED89C0006F76D8 /* AppDeligate.swift */; };
 		DED8F0F52CB8D3C000732890 /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */; };
 		DEEB11F02CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
 		DEEB11F12CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
@@ -88,6 +91,7 @@
 		DE3B156F2CACCB9A00BC493D /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		DE3B15732CACEF4900BC493D /* PhotoInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoView.swift; sourceTree = "<group>"; };
 		DE405E722CBE152600B38F06 /* MakeGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeGroupSetView.swift; sourceTree = "<group>"; };
+		DE42D8A82CEC2AF700492449 /* TextLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextLogo.png; sourceTree = "<group>"; };
 		DE47CEDE2CCB1AAB0067B02D /* HaruWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HaruWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE47CEE02CCB1AAB0067B02D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		DE47CEE22CCB1AAB0067B02D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -110,6 +114,8 @@
 		DEB693E92CC1F6AB00F7168F /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		DEC1205D2CC0A2690052E1E4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DEC1205F2CC0E0450052E1E4 /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
+		DED7520B2CED7A07006F76D8 /* capsule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capsule.png; sourceTree = "<group>"; };
+		DED7520D2CED89C0006F76D8 /* AppDeligate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeligate.swift; sourceTree = "<group>"; };
 		DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
 		DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4cut1.jpg; sourceTree = "<group>"; };
 		DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Haru.entitlements; sourceTree = "<group>"; };
@@ -164,8 +170,10 @@
 			isa = PBXGroup;
 			children = (
 				DE9955BB2CEAF31A00969B8E /* Info.plist */,
+				DE42D8A82CEC2AF700492449 /* TextLogo.png */,
 				DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */,
 				DE17F51C2C9BACF800008884 /* HaruApp.swift */,
+				DED7520D2CED89C0006F76D8 /* AppDeligate.swift */,
 				DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */,
 				DEC1205D2CC0A2690052E1E4 /* Extension.swift */,
 				DE17F5322C9BBCF000008884 /* InfoModel.swift */,
@@ -180,6 +188,7 @@
 				DE3B156F2CACCB9A00BC493D /* PhotoPickerView.swift */,
 				DE17F5202C9BACF800008884 /* Assets.xcassets */,
 				DE22068F2CB8B8E7007A52FD /* cutClassification.mlmodel */,
+				DED7520B2CED7A07006F76D8 /* capsule.png */,
 				DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */,
 				DEF5725A2CE583670042C68A /* 뽑기통.png */,
 				DE17F5222C9BACF800008884 /* Preview Content */,
@@ -344,7 +353,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE17F5242C9BACF800008884 /* Preview Assets.xcassets in Resources */,
+				DE42D8A92CEC2AF700492449 /* TextLogo.png in Resources */,
 				DEEB11F02CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */,
+				DED7520C2CED7A07006F76D8 /* capsule.png in Resources */,
 				DEF5725B2CE583670042C68A /* 뽑기통.png in Resources */,
 				DE17F5212C9BACF800008884 /* Assets.xcassets in Resources */,
 			);
@@ -390,6 +401,7 @@
 				DED8F0F52CB8D3C000732890 /* CustomImagePicker.swift in Sources */,
 				DEF5725F2CE5A6AE0042C68A /* EditGroupView.swift in Sources */,
 				DE3B15742CACEF4900BC493D /* PhotoInfoView.swift in Sources */,
+				DED7520E2CED89C0006F76D8 /* AppDeligate.swift in Sources */,
 				DEF572632CE5A6C80042C68A /* EditMemoView.swift in Sources */,
 				DE9A40312CDF02CF00B101CF /* MLDataPickerView.swift in Sources */,
 				DEC120602CC0E0450052E1E4 /* AddGroupView.swift in Sources */,
