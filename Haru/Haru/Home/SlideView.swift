@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SlideView: View {
-    @Binding var photoList: [PhotoInfo] // 사진 리스트
+    @State var photoList: [PhotoInfo] // 사진 리스트
     @State private var currentIndex: Int = 0 // 현재 사진 인덱스
     @Environment(\.dismiss) var dismiss
     @State private var backgroundColor: Color = .white

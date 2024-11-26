@@ -9,17 +9,32 @@ import SwiftUI
 import SwiftData
 import Photos
 
+
+
 struct HomeView: View {
     @Environment(\.modelContext) var modelContext
+
     
-    @Query var photos: [PhotoInfo]
+//    @Binding var isOpen: Bool
+//    @Binding var todayPhotoListName: [String]
+
+    
+    @Query var savedphotos: [PhotoInfo]
+
     @Query var groups: [GroupInfo]
-    
     
     @State var todayPhotoList: [PhotoInfo] = []
     
-    @State var isSlide = false
+    
+    @AppStorage("lastOpenDate") var lastOpenDate: String = "2024년 11월 25일 16시 33분"
+    @AppStorage("isOpen") var isOpen: Bool = false // UserDefaults에 저장
+    @AppStorage("todayPhotoListName") var todayPhotoListName: [String] = [] // 추천 사진을 저장할 Data 타입
 
+
+    
+    
+    @State var isSlide = false
+    
     @State var maxCount = 0
     
     
@@ -27,8 +42,9 @@ struct HomeView: View {
     
     @State private var showAlert: Bool = false
     
-    
-    @AppStorage("isOpen") private var isOpen = false
+    var filteredPhotos: [PhotoInfo] {
+        savedphotos.filter { todayPhotoListName.contains($0.imageName) }
+    }
 
     
     var body: some View {
@@ -39,10 +55,18 @@ struct HomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(height: 60)
-                        .padding(.leading, 10)
                     
                     Spacer()
-
+                    
+//                    Image(systemName: "photo.fill")
+//                        .foregroundColor(.customGray)
+//                        .font(.system(size: 18))
+//                        .onTapGesture {
+//                            todayPhotoList = recommendPhotos(photos: savedphotos)
+//                            todayPhotoListName = todayPhotoList.map { $0.imageName }
+//                            
+//                        }
+                    
                     NavigationLink(destination: LibraryView()) {
                         Image(systemName: "photo.fill")
                             .foregroundColor(.customGray)
@@ -55,6 +79,8 @@ struct HomeView: View {
                             .font(.system(size: 18))
                     }
                 }
+                .padding(.horizontal, 10)
+                
                 .padding(.top, 20)
                 
                 //                Spacer()
@@ -67,7 +93,7 @@ struct HomeView: View {
                         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 0)
                     
                     if isOpen {
-                        if let todayPhoto = todayPhotoList.first {
+                        if let todayPhoto = filteredPhotos.first {
                             if let uiImage = UIImage(data: todayPhoto.photo) {
                                 Image(uiImage: uiImage)
                                     .resizable()
@@ -97,11 +123,13 @@ struct HomeView: View {
                     .background(Color.CustomPink)
                     .cornerRadius(20)
                     .onTapGesture {
-                        if todayPhotoList.isEmpty
+                        if filteredPhotos.isEmpty
                         { showAlert = true }
+                        
                         else{
                             isSlide = true
                             isOpen = true
+                            lastOpenDate = formattedDate(Date())
                         }
                     }
                 
@@ -114,7 +142,7 @@ struct HomeView: View {
         .tint(Color.CustomPink)
         
         .fullScreenCover(isPresented: $isSlide, content: {
-            SlideView(photoList: $todayPhotoList)
+            SlideView(photoList: filteredPhotos)
         })
         
         .alert(isPresented: $showAlert) {
@@ -126,34 +154,68 @@ struct HomeView: View {
         }
         
         .onAppear {
-             requestPhotoLibraryAccess()
-             if groups.isEmpty {
-                 settingValue()
-             }
-             // NotificationCenter에 옵저버 추가
-             NotificationCenter.default.addObserver(forName: .updatePhotos, object: nil, queue: .main) { _ in
-                 updatePhotos()
-             }
-         }
-         .onDisappear {
-             NotificationCenter.default.removeObserver(self, name: .updatePhotos, object: nil)
-         }
+            requestPhotoLibraryAccess()
+            if groups.isEmpty {
+                settingValue()
+            }
+            dateCheck()
 
-        
-        
-        
+        }
     }
+
+    
     
     
     func settingValue() {
-        modelContext.insert(GroupInfo(name: "기타", member: ["-"]))
+        modelContext.insert(GroupInfo(name: "기타", member: [" "]))
     }
     
-    private func updatePhotos() {
-        todayPhotoList = recommendPhotos(photos: photos)
-        isOpen = false
+    func dateCheck() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일 HH시 mm분"
+        formatter.locale = Locale(identifier: "ko_KR")
+
+        
+        guard let lastDate = formatter.date(from: lastOpenDate) else {
+            print("날짜 변환 실패")
+            return
+        }
+        
+        let calendar = Calendar.current
+        let nextOpenDate = calendar.date(byAdding: .day, value: 1, to: lastDate)!
+        let nextOpenDateAtNinePM = calendar.date(bySettingHour: 21, minute: 0, second: 0, of: nextOpenDate)!
+
+        // 현재 시각 가져오기
+        let currentDate = Date()
+
+        // 현재 시각이 다음 날 저녁 9시를 초과했는지 확인
+        if currentDate >= nextOpenDateAtNinePM {
+            isOpen = false
+            todayPhotoList = recommendPhotos(photos: savedphotos)
+            todayPhotoListName = todayPhotoList.map { $0.imageName }
+            print("isOpen이 false로 변경되었습니다.")
+        } else {
+            print("isOpen은 여전히 true입니다.")
+        }
+        
     }
     
+    
+    //    func loadTodayPhotos() {
+    //        let phoList = #Predicate<PhotoInfo> {photo in
+    //            todayPhotoListName.contains(photo.imageName)
+    //        }
+    //        isOpen = false
+    //    }
+    
+    
+    
+    //    private func updatePhotos() {
+    //        todayPhotoList = photos.filter { photo in
+    //                    todayPhotoListName.contains(photo.name) // photo.name이 저장된 이름 리스트에 있는지 확인
+    //                }
+    //    }
+    //
     private func requestPhotoLibraryAccess() {
         let status = PHPhotoLibrary.authorizationStatus()
         if status == .notDetermined {
@@ -168,18 +230,6 @@ struct HomeView: View {
     }
     
     
-    
-    func updateImageIfNeeded() {
-        let calendar = Calendar.current
-        let currentHour = calendar.component(.hour, from: Date())
-        
-        // 현재 시간이 21시라면
-        if currentHour == 21 {
-            todayPhotoList = recommendPhotos(photos: photos)
-            isOpen = false
-            
-        }
-    }
     
     // 사진 추천
     func recommendPhotos(photos: [PhotoInfo]) -> [PhotoInfo] {
@@ -200,7 +250,7 @@ struct HomeView: View {
         }
         
         else {
-            return daterecommendPhotos(photos: photos)
+            return daterecommendPhotos(photos: photos).shuffled()
         }
     }
     
@@ -247,7 +297,7 @@ struct HomeView: View {
             recommendedPhotos.append(contentsOf: randomPhotos)
         }
         
-        return Array(recommendedPhotos.prefix(maxCount)) // 최대 5장 반환
+        return Array(recommendedPhotos.prefix(maxCount)).shuffled() // 최대 5장 반환
     }
     
     // N년 전 오늘
@@ -358,17 +408,25 @@ struct HomeView: View {
         
         return similarities.prefix(maxCount).map { $0.photo }
     }
-}
-
-
-
-
-
-#Preview {
-    //    HomeView(stack: .constant(NavigationPath()))
-    NavigationStack{
-        HomeView()
-            .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
+    
+    func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일 HH시 mm분"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter.string(from: date)
     }
+
 }
+
+
+
+
+
+//#Preview {
+//    //    HomeView(stack: .constant(NavigationPath()))
+//    NavigationStack{
+//        HomeView(isOpen: .constant(false))
+//            .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
+//    }
+//}
 

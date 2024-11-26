@@ -55,7 +55,18 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
         completionHandler([.alert, .sound])
     }
     
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // 알림 클릭 시 데이터 업데이트 수행
+        performAppUpdate()
+        
+        // completionHandler 호출
         completionHandler()
+    }
+    
+    private func performAppUpdate() {
+        // 데이터 업데이트 로직 추가
+        print("알림 클릭 시 데이터 업데이트 수행")
+        // 여기서 필요한 데이터 업데이트 작업을 수행합니다.
     }
 }

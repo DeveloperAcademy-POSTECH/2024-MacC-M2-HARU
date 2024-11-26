@@ -81,10 +81,14 @@ struct AddView: View {
                         .padding(40)
 //                        .frame(minWidth: .infinity, maxHeight: 300)
                 } else {
-                    Image("capsule")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200)
+                    VStack(spacing: 40){
+                        Image("capsule")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200)
+                        Text("사진을 등록해주세요")
+//                            .fontWeight(.semibold)
+                    }
                 }
             }
             .frame(width: 336, height: 423)
@@ -95,7 +99,7 @@ struct AddView: View {
                     Text("사진 등록하기")
                         .foregroundColor(.white)
                         .frame(width: 337, height: 59)
-                        .background(Color.blue)
+                        .background(Color.CustomPink)
                         .cornerRadius(20)
                         .alert(isPresented: $showAlert) {
                             Alert(title: Text("중복 오류"), message: Text("이미 존재하는 이미지 이름입니다."), dismissButton: .default(Text("확인")))
