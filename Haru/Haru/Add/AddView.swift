@@ -87,6 +87,9 @@ struct AddView: View {
                             .scaledToFit()
                             .frame(width: 200)
                         Text("사진을 등록해주세요")
+                            .font(.headline) // 제목 스타일
+                            .foregroundColor(.gray) // 색상 설정
+
 //                            .fontWeight(.semibold)
                     }
                 }
@@ -94,8 +97,8 @@ struct AddView: View {
             .frame(width: 336, height: 423)
             .padding(.vertical, 30)
             
-            if imageName != nil {
-                NavigationLink(destination: AddDateView(isSheetOpen: $isSheetOpen, imageData: imageData!, imageName: imageName!, date: creationDate!)) {
+            if let imageName, let imageData, let creationDate {
+                NavigationLink(destination: AddDateView(isSheetOpen: $isSheetOpen, imageData: imageData, imageName: imageName, date: creationDate)) {
                     Text("사진 등록하기")
                         .foregroundColor(.white)
                         .frame(width: 337, height: 59)
@@ -119,6 +122,7 @@ struct AddView: View {
         }
     }
     
+    @MainActor
     private func loadImageData() async {
         guard let item = selectedItem else { return }
 

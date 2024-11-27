@@ -29,13 +29,13 @@ struct SlideView: View {
                         
                         NavigationLink(destination: EditMemoView(photoInfo: $photoList[currentIndex], place: photoList[currentIndex].place, text: photoList[currentIndex].text)) {Text("메모 수정")}
                         
-                        Button("삭제", action: {modelContext.delete(photoList[currentIndex])})
+                        Button("삭제", action: {modelContext.delete(photoList[currentIndex]); dismiss()})
                     } label: {Image(systemName: "ellipsis")
-                            .foregroundColor(.customGray)
+                            .foregroundColor(Color.white)
                     }
                     
                     Image(systemName: "xmark")
-                        .foregroundColor(.customGray)
+                        .foregroundColor(Color.white)
                         .onTapGesture {
                             dismiss()
                         }
@@ -48,10 +48,12 @@ struct SlideView: View {
             HStack {
                 Button(action: previousImage) {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(Color.CustomPink)
+//                        .foregroundColor(Color.CustomPink)
 
                 }
                 .disabled(currentIndex == 0)
+                .foregroundColor(currentIndex == 0 ? Color.gray : Color.CustomPink)
+
                 
                 Spacer()
                 Text("\(currentIndex+1)/\(photoList.count)")
@@ -59,10 +61,12 @@ struct SlideView: View {
                 
                 Button(action: nextImage) {
                     Image(systemName: "chevron.right")
-                        .foregroundColor(Color.CustomPink)
+//                        .foregroundColor(Color.CustomPink)
 
                 }
                 .disabled(currentIndex == photoList.count - 1)
+                .foregroundColor(currentIndex == photoList.count - 1 ? Color.gray : Color.CustomPink)
+                
             }
             .padding()
             .padding(.bottom, 30)
@@ -70,6 +74,7 @@ struct SlideView: View {
             
         }
         .edgesIgnoringSafeArea(.bottom)
+        .toolbar(.hidden, for: .navigationBar)
     }
     
     func nextImage() {

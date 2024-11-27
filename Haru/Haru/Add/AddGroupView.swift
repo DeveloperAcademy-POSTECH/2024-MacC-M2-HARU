@@ -68,6 +68,10 @@ struct AddGroupView: View {
             
             
             Text("누구랑 찍었나요?")
+                .font(.headline) // 제목 스타일
+//                        .foregroundColor(.pink) // 색상 설정
+                .padding(.vertical, 8) // 여백 추가
+                .frame(maxWidth: .infinity, alignment: .leading) // 정렬
             
             VStack(spacing: 16) {
             Picker("Select a group", selection: $selectedGroup) {

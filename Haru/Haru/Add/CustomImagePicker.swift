@@ -62,16 +62,15 @@ struct CustomImagePicker: View {
                 .disabled(selectedAssets.isEmpty) // 선택된 사진이 없으면 비활성화
             }
         }
-        .onAppear {
-            fetchPhotos(startDate: startDate, endDate: endDate)
+        .task {
+            await fetchPhotos(startDate: startDate, endDate: endDate)
             isLoading = false // 로딩 종료
             
         }
         
     }
     
-    private func fetchPhotos(startDate: Date, endDate: Date) {
-        //        isLoading = true // 로딩 시작
+    private func fetchPhotos(startDate: Date, endDate: Date) async {
         let options = PHFetchOptions()
         options.includeHiddenAssets = false
         options.includeAssetSourceTypes = [.typeUserLibrary]

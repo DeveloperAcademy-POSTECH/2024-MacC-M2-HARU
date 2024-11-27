@@ -48,25 +48,36 @@ struct AddTextView: View {
                         .frame(height: 200)
                         .padding(.bottom, 40)
                 }
-
-                VStack(spacing: 16) {
+                VStack (spacing: 10){
                     Text("장소")
-                    
+                        .font(.headline) // 제목 스타일
+//                        .foregroundColor(.pink) // 색상 설정
+                        .padding(.vertical, 8) // 여백 추가
+                        .frame(maxWidth: .infinity, alignment: .leading) // 정렬
+
                     TextField("장소를 입력하세요", text: $place)
                         .focused($isPlaceFocused)
                         .scrollContentBackground(.hidden)
                         .padding()
-                        .background(Color.LightPink)
+                        .background(Color.red.opacity(0.1)) // 배경색 설정
                         .frame(maxWidth: .infinity, maxHeight: 44)
                         .cornerRadius(10)
 
                     Text("메모")
-                    
+                        .font(.headline) // 제목 스타일
+//                        .foregroundColor(.pink) // 색상 설정
+                        .padding(.vertical, 8) // 여백 추가
+                        .frame(maxWidth: .infinity, alignment: .leading) // 정렬
+
                     TextEditor(text: $text)
                         .focused($isTextFocused)
                         .scrollContentBackground(.hidden)
+                        .overlay(alignment: .topLeading) {
+                            Text("메모를 입력하세요")
+                                .foregroundStyle(text.isEmpty ? .gray : .clear)
+                        }
                         .padding()
-                        .background(Color.LightPink)
+                        .background(Color.red.opacity(0.1)) // 배경색 설정
                         .cornerRadius(10)
                         .lineSpacing(10)
                         .frame(maxWidth: .infinity, minHeight: 166)

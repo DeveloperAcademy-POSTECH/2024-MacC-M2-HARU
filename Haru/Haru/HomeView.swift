@@ -98,7 +98,6 @@ struct HomeView: View {
                                 Image(uiImage: uiImage)
                                     .resizable()
                                     .scaledToFit()
-                                //                                    .frame(height: 336)
                                     .padding(40)
                                 
                             }
@@ -109,29 +108,38 @@ struct HomeView: View {
                         Image("뽑기통")
                             .resizable()
                             .scaledToFit()
-                        //                            .frame(height: 500)
                         
                     }
                     
                 }
-                .frame(width: 336, height: 423)
-                .padding(.vertical, 20)
-                
-                Text("오늘의 캡슐")
-                    .foregroundColor(.white)
-                    .frame(width: 337, height: 59)
-                    .background(Color.CustomPink)
-                    .cornerRadius(20)
-                    .onTapGesture {
-                        if filteredPhotos.isEmpty
-                        { showAlert = true }
-                        
-                        else{
-                            isSlide = true
-                            isOpen = true
-                            lastOpenDate = formattedDate(Date())
-                        }
+                .onTapGesture {
+                    if filteredPhotos.isEmpty
+                    { showAlert = true }
+                    
+                    else{
+                        isSlide = true
+                        isOpen = true
+                        lastOpenDate = formattedDate(Date())
                     }
+                }
+                .frame(width: 336, height: 423)
+                .padding(.vertical, 70)
+                
+//                Text("오늘의 캡슐")
+//                    .foregroundColor(.white)
+//                    .frame(width: 337, height: 59)
+//                    .background(Color.CustomPink)
+//                    .cornerRadius(20)
+//                    .onTapGesture {
+//                        if filteredPhotos.isEmpty
+//                        { showAlert = true }
+//                        
+//                        else{
+//                            isSlide = true
+//                            isOpen = true
+//                            lastOpenDate = formattedDate(Date())
+//                        }
+//                    }
                 
                 Spacer()
             }
@@ -142,7 +150,9 @@ struct HomeView: View {
         .tint(Color.CustomPink)
         
         .fullScreenCover(isPresented: $isSlide, content: {
-            SlideView(photoList: filteredPhotos)
+            NavigationStack{
+                SlideView(photoList: filteredPhotos)
+            }
         })
         
         .alert(isPresented: $showAlert) {
@@ -422,11 +432,11 @@ struct HomeView: View {
 
 
 
-//#Preview {
-//    //    HomeView(stack: .constant(NavigationPath()))
-//    NavigationStack{
-//        HomeView(isOpen: .constant(false))
-//            .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
-//    }
-//}
+#Preview {
+    //    HomeView(stack: .constant(NavigationPath()))
+    NavigationStack{
+        HomeView()
+            .modelContainer(for: [PhotoInfo.self, GroupInfo.self])
+    }
+}
 

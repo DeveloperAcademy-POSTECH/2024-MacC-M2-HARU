@@ -96,21 +96,22 @@ struct Memory1View: View {
             loadImageAndColor()
         }
         
-        .navigationBarItems(trailing: Menu {
+        .navigationBarItems(trailing:
+                                Menu {
             NavigationLink(destination: EditDateView(photoInfo: $photoInfo, editDate: photoInfo.date)) {Text("날짜 수정")}
             
-            NavigationLink(destination: EditGroupView(photoInfo: $photoInfo)) {Text("그룹 수정")} 
+            NavigationLink(destination: EditGroupView(photoInfo: $photoInfo)) {Text("그룹 수정")}
             
             NavigationLink(destination: EditMemoView(photoInfo: $photoInfo, place: photoInfo.place, text: photoInfo.text)) {Text("메모 수정")}
             
-            Button("삭제", action: {modelContext.delete(photoInfo);dismiss()})
-
+            Button("삭제", action: {modelContext.delete(photoInfo); dismiss()})
         } label: {Image(systemName: "ellipsis")
-                .foregroundColor(.customGray)
-        })
+                .foregroundColor(Color.white)
+        }
+        )
         
         .toolbarBackground(.clear, for: .navigationBar)
-
+        
     }
     
     //        .navigationBarBackButtonHidden(true)

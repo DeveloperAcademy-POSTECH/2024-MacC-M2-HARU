@@ -10,7 +10,6 @@
 		DE16EC532CDD9E9E0089F064 /* MemoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16EC522CDD9E9E0089F064 /* MemoryInfoView.swift */; };
 		DE17F51D2C9BACF800008884 /* HaruApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F51C2C9BACF800008884 /* HaruApp.swift */; };
 		DE17F51F2C9BACF800008884 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F51E2C9BACF800008884 /* ContentView.swift */; };
-		DE17F5212C9BACF800008884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE17F5202C9BACF800008884 /* Assets.xcassets */; };
 		DE17F5242C9BACF800008884 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE17F5232C9BACF800008884 /* Preview Assets.xcassets */; };
 		DE17F52B2C9BAD1000008884 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F52A2C9BAD1000008884 /* HomeView.swift */; };
 		DE17F52D2C9BB35D00008884 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17F52C2C9BB35D00008884 /* AddView.swift */; };
@@ -21,15 +20,9 @@
 		DE3B15742CACEF4900BC493D /* PhotoInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B15732CACEF4900BC493D /* PhotoInfoView.swift */; };
 		DE405E732CBE152600B38F06 /* MakeGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE405E722CBE152600B38F06 /* MakeGroupSetView.swift */; };
 		DE42D8A92CEC2AF700492449 /* TextLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DE42D8A82CEC2AF700492449 /* TextLogo.png */; };
-		DE47CEE12CCB1AAB0067B02D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE47CEE02CCB1AAB0067B02D /* WidgetKit.framework */; };
-		DE47CEE32CCB1AAB0067B02D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE47CEE22CCB1AAB0067B02D /* SwiftUI.framework */; };
-		DE47CEE62CCB1AAB0067B02D /* HaruWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47CEE52CCB1AAB0067B02D /* HaruWidgetBundle.swift */; };
-		DE47CEE82CCB1AAB0067B02D /* HaruWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47CEE72CCB1AAB0067B02D /* HaruWidgetLiveActivity.swift */; };
-		DE47CEEA2CCB1AAB0067B02D /* HaruWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47CEE92CCB1AAB0067B02D /* HaruWidget.swift */; };
-		DE47CEEC2CCB1AAB0067B02D /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47CEEB2CCB1AAB0067B02D /* AppIntent.swift */; };
-		DE47CEEE2CCB1AAC0067B02D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE47CEED2CCB1AAC0067B02D /* Assets.xcassets */; };
-		DE47CEF22CCB1AAC0067B02D /* HaruWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DE47CEDE2CCB1AAB0067B02D /* HaruWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DE5289F92CD9C7AF00E11186 /* AddTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5289F82CD9C7AF00E11186 /* AddTextView.swift */; };
+		DE5DC0D52CF6C45E00F01496 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE17F5202C9BACF800008884 /* Assets.xcassets */; };
+		DE5DC0D72CF6C4BA00F01496 /* Logo_찐찐찐 최종.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5DC0D62CF6C4BA00F01496 /* Logo_찐찐찐 최종.png */; };
 		DE753D002CB4CF2300F691A0 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE753CFF2CB4CF2300F691A0 /* SettingView.swift */; };
 		DE753D022CB4D2AC00F691A0 /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE753D012CB4D2AC00F691A0 /* MemoryView.swift */; };
 		DE7D81552CA100C300A470DD /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D81542CA100C300A470DD /* LibraryView.swift */; };
@@ -38,6 +31,7 @@
 		DE9A402D2CDEF3AE00B101CF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */; };
 		DE9A40312CDF02CF00B101CF /* MLDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9A40302CDF02CF00B101CF /* MLDataPickerView.swift */; };
 		DEA7BA132CC60D2F00618088 /* Memory1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA7BA122CC60D2F00618088 /* Memory1View.swift */; };
+		DEB095182CF6B30A0027925F /* Haru4AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB095172CF6B30A0027925F /* Haru4AppLogo.png */; };
 		DEB693EA2CC1F6AB00F7168F /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB693E92CC1F6AB00F7168F /* SlideView.swift */; };
 		DEC1205E2CC0A2690052E1E4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205D2CC0A2690052E1E4 /* Extension.swift */; };
 		DEC120602CC0E0450052E1E4 /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1205F2CC0E0450052E1E4 /* AddGroupView.swift */; };
@@ -45,22 +39,11 @@
 		DED7520E2CED89C0006F76D8 /* AppDeligate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED7520D2CED89C0006F76D8 /* AppDeligate.swift */; };
 		DED8F0F52CB8D3C000732890 /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */; };
 		DEEB11F02CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
-		DEEB11F12CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */; };
 		DEF5725B2CE583670042C68A /* 뽑기통.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF5725A2CE583670042C68A /* 뽑기통.png */; };
 		DEF5725F2CE5A6AE0042C68A /* EditGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5725E2CE5A6AE0042C68A /* EditGroupView.swift */; };
 		DEF572612CE5A6BA0042C68A /* EditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF572602CE5A6BA0042C68A /* EditDateView.swift */; };
 		DEF572632CE5A6C80042C68A /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF572622CE5A6C80042C68A /* EditMemoView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DE47CEF02CCB1AAC0067B02D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DE17F5112C9BACF800008884 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DE47CEDD2CCB1AAB0067B02D;
-			remoteInfo = HaruWidgetExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DE47CEF32CCB1AAC0067B02D /* Embed Foundation Extensions */ = {
@@ -69,7 +52,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				DE47CEF22CCB1AAC0067B02D /* HaruWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,16 +74,8 @@
 		DE3B15732CACEF4900BC493D /* PhotoInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoView.swift; sourceTree = "<group>"; };
 		DE405E722CBE152600B38F06 /* MakeGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeGroupSetView.swift; sourceTree = "<group>"; };
 		DE42D8A82CEC2AF700492449 /* TextLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextLogo.png; sourceTree = "<group>"; };
-		DE47CEDE2CCB1AAB0067B02D /* HaruWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HaruWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE47CEE02CCB1AAB0067B02D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		DE47CEE22CCB1AAB0067B02D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		DE47CEE52CCB1AAB0067B02D /* HaruWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaruWidgetBundle.swift; sourceTree = "<group>"; };
-		DE47CEE72CCB1AAB0067B02D /* HaruWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaruWidgetLiveActivity.swift; sourceTree = "<group>"; };
-		DE47CEE92CCB1AAB0067B02D /* HaruWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaruWidget.swift; sourceTree = "<group>"; };
-		DE47CEEB2CCB1AAB0067B02D /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
-		DE47CEED2CCB1AAC0067B02D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DE47CEEF2CCB1AAC0067B02D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE5289F82CD9C7AF00E11186 /* AddTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTextView.swift; sourceTree = "<group>"; };
+		DE5DC0D62CF6C4BA00F01496 /* Logo_찐찐찐 최종.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo_찐찐찐 최종.png"; sourceTree = "<group>"; };
 		DE753CFF2CB4CF2300F691A0 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		DE753D012CB4D2AC00F691A0 /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
 		DE7D81542CA100C300A470DD /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -111,6 +85,7 @@
 		DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		DE9A40302CDF02CF00B101CF /* MLDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDataPickerView.swift; sourceTree = "<group>"; };
 		DEA7BA122CC60D2F00618088 /* Memory1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory1View.swift; sourceTree = "<group>"; };
+		DEB095172CF6B30A0027925F /* Haru4AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Haru4AppLogo.png; sourceTree = "<group>"; };
 		DEB693E92CC1F6AB00F7168F /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		DEC1205D2CC0A2690052E1E4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DEC1205F2CC0E0450052E1E4 /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
@@ -118,8 +93,6 @@
 		DED7520D2CED89C0006F76D8 /* AppDeligate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeligate.swift; sourceTree = "<group>"; };
 		DED8F0F42CB8D3C000732890 /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
 		DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4cut1.jpg; sourceTree = "<group>"; };
-		DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Haru.entitlements; sourceTree = "<group>"; };
-		DEEB11F32CD1DDA9006BF6F0 /* HaruWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HaruWidgetExtension.entitlements; sourceTree = "<group>"; };
 		DEF5725A2CE583670042C68A /* 뽑기통.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "뽑기통.png"; sourceTree = "<group>"; };
 		DEF5725E2CE5A6AE0042C68A /* EditGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupView.swift; sourceTree = "<group>"; };
 		DEF572602CE5A6BA0042C68A /* EditDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateView.swift; sourceTree = "<group>"; };
@@ -134,25 +107,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DE47CEDB2CCB1AAB0067B02D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE47CEE32CCB1AAB0067B02D /* SwiftUI.framework in Frameworks */,
-				DE47CEE12CCB1AAB0067B02D /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		DE17F5102C9BACF800008884 = {
 			isa = PBXGroup;
 			children = (
-				DEEB11F32CD1DDA9006BF6F0 /* HaruWidgetExtension.entitlements */,
 				DE17F51B2C9BACF800008884 /* Haru */,
-				DE47CEE42CCB1AAB0067B02D /* HaruWidget */,
-				DE47CEDF2CCB1AAB0067B02D /* Frameworks */,
 				DE17F51A2C9BACF800008884 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -161,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				DE17F5192C9BACF800008884 /* Haru.app */,
-				DE47CEDE2CCB1AAB0067B02D /* HaruWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				DE9955BB2CEAF31A00969B8E /* Info.plist */,
+				DEB095172CF6B30A0027925F /* Haru4AppLogo.png */,
 				DE42D8A82CEC2AF700492449 /* TextLogo.png */,
-				DEEB11F22CD1DD58006BF6F0 /* Haru.entitlements */,
 				DE17F51C2C9BACF800008884 /* HaruApp.swift */,
 				DED7520D2CED89C0006F76D8 /* AppDeligate.swift */,
 				DE9A402C2CDEF3AE00B101CF /* NotificationManager.swift */,
@@ -188,6 +148,7 @@
 				DE3B156F2CACCB9A00BC493D /* PhotoPickerView.swift */,
 				DE17F5202C9BACF800008884 /* Assets.xcassets */,
 				DE22068F2CB8B8E7007A52FD /* cutClassification.mlmodel */,
+				DE5DC0D62CF6C4BA00F01496 /* Logo_찐찐찐 최종.png */,
 				DED7520B2CED7A07006F76D8 /* capsule.png */,
 				DEEB11EF2CD1DCF0006BF6F0 /* 4cut1.jpg */,
 				DEF5725A2CE583670042C68A /* 뽑기통.png */,
@@ -202,28 +163,6 @@
 				DE17F5232C9BACF800008884 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		DE47CEDF2CCB1AAB0067B02D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DE47CEE02CCB1AAB0067B02D /* WidgetKit.framework */,
-				DE47CEE22CCB1AAB0067B02D /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DE47CEE42CCB1AAB0067B02D /* HaruWidget */ = {
-			isa = PBXGroup;
-			children = (
-				DE47CEE52CCB1AAB0067B02D /* HaruWidgetBundle.swift */,
-				DE47CEE72CCB1AAB0067B02D /* HaruWidgetLiveActivity.swift */,
-				DE47CEE92CCB1AAB0067B02D /* HaruWidget.swift */,
-				DE47CEEB2CCB1AAB0067B02D /* AppIntent.swift */,
-				DE47CEED2CCB1AAC0067B02D /* Assets.xcassets */,
-				DE47CEEF2CCB1AAC0067B02D /* Info.plist */,
-			);
-			path = HaruWidget;
 			sourceTree = "<group>";
 		};
 		DE753CFE2CB4CC9400F691A0 /* Add */ = {
@@ -286,29 +225,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				DE47CEF12CCB1AAC0067B02D /* PBXTargetDependency */,
 			);
 			name = Haru;
 			productName = Haru;
 			productReference = DE17F5192C9BACF800008884 /* Haru.app */;
 			productType = "com.apple.product-type.application";
-		};
-		DE47CEDD2CCB1AAB0067B02D /* HaruWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DE47CEF62CCB1AAC0067B02D /* Build configuration list for PBXNativeTarget "HaruWidgetExtension" */;
-			buildPhases = (
-				DE47CEDA2CCB1AAB0067B02D /* Sources */,
-				DE47CEDB2CCB1AAB0067B02D /* Frameworks */,
-				DE47CEDC2CCB1AAB0067B02D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = HaruWidgetExtension;
-			productName = HaruWidgetExtension;
-			productReference = DE47CEDE2CCB1AAB0067B02D /* HaruWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -321,9 +242,6 @@
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					DE17F5182C9BACF800008884 = {
-						CreatedOnToolsVersion = 15.3;
-					};
-					DE47CEDD2CCB1AAB0067B02D = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -342,7 +260,6 @@
 			projectRoot = "";
 			targets = (
 				DE17F5182C9BACF800008884 /* Haru */,
-				DE47CEDD2CCB1AAB0067B02D /* HaruWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -356,17 +273,10 @@
 				DE42D8A92CEC2AF700492449 /* TextLogo.png in Resources */,
 				DEEB11F02CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */,
 				DED7520C2CED7A07006F76D8 /* capsule.png in Resources */,
+				DE5DC0D52CF6C45E00F01496 /* Assets.xcassets in Resources */,
+				DE5DC0D72CF6C4BA00F01496 /* Logo_찐찐찐 최종.png in Resources */,
 				DEF5725B2CE583670042C68A /* 뽑기통.png in Resources */,
-				DE17F5212C9BACF800008884 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE47CEDC2CCB1AAB0067B02D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE47CEEE2CCB1AAC0067B02D /* Assets.xcassets in Resources */,
-				DEEB11F12CD1DCF0006BF6F0 /* 4cut1.jpg in Resources */,
+				DEB095182CF6B30A0027925F /* Haru4AppLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,26 +318,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DE47CEDA2CCB1AAB0067B02D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE47CEE82CCB1AAB0067B02D /* HaruWidgetLiveActivity.swift in Sources */,
-				DE47CEEC2CCB1AAB0067B02D /* AppIntent.swift in Sources */,
-				DE47CEEA2CCB1AAB0067B02D /* HaruWidget.swift in Sources */,
-				DE47CEE62CCB1AAB0067B02D /* HaruWidgetBundle.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DE47CEF12CCB1AAC0067B02D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DE47CEDD2CCB1AAB0067B02D /* HaruWidgetExtension */;
-			targetProxy = DE47CEF02CCB1AAC0067B02D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DE17F5252C9BACF800008884 /* Debug */ = {
@@ -552,10 +443,9 @@
 		DE17F5282C9BACF800008884 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Haru/Haru.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Haru/Preview Content\"";
@@ -563,6 +453,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Haru/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -586,10 +477,9 @@
 		DE17F5292C9BACF800008884 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Haru/Haru.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Haru/Preview Content\"";
@@ -597,6 +487,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Haru/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -611,62 +502,6 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ezzkim.Haru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		DE47CEF42CCB1AAC0067B02D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = HaruWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8W62FS2UWY;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HaruWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = HaruWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ezzkim.Haru.HaruWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		DE47CEF52CCB1AAC0067B02D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = HaruWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8W62FS2UWY;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HaruWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = HaruWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ezzkim.Haru.HaruWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -690,15 +525,6 @@
 			buildConfigurations = (
 				DE17F5282C9BACF800008884 /* Debug */,
 				DE17F5292C9BACF800008884 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DE47CEF62CCB1AAC0067B02D /* Build configuration list for PBXNativeTarget "HaruWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DE47CEF42CCB1AAC0067B02D /* Debug */,
-				DE47CEF52CCB1AAC0067B02D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
