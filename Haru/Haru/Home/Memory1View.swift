@@ -66,24 +66,21 @@ struct Memory1View: View {
                         .gesture(
                             DragGesture()
                                 .onChanged({ value in
-                                    withAnimation(.spring()) {
-                                        currentDragOffsetY = value.translation.height
-                                    }
+                                    currentDragOffsetY = value.translation.height
                                 })
                                 .onEnded({ value in
-                                    withAnimation(.spring()) {
-                                        if currentDragOffsetY < -150 {
-                                            endingOffsetY = -UIScreen.main.bounds.height * 0.3 // 절반 올라오게 설정
-                                            currentDragOffsetY = .zero
-                                        } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
-                                            endingOffsetY = 0 // 원래 위치로 돌아가기
-                                            currentDragOffsetY = .zero
-                                        } else {
-                                            currentDragOffsetY = .zero
-                                        }
+                                    if currentDragOffsetY < -150 {
+                                        endingOffsetY = -UIScreen.main.bounds.height * 0.3 // 절반 올라오게 설정
+                                        currentDragOffsetY = .zero
+                                    } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
+                                        endingOffsetY = 0 // 원래 위치로 돌아가기
+                                        currentDragOffsetY = .zero
+                                    } else {
+                                        currentDragOffsetY = .zero
                                     }
                                 })
                         )
+
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 

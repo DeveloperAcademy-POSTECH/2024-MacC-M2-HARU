@@ -31,14 +31,11 @@ struct MemoryInfoView: View {
                         .padding(.bottom, 5)
                     
                     
-                    Text("\(photoInfo.place)에서 \(photoInfo.groupName)")
-                        .font(.subheadline)
-                        .padding(.bottom, 5)                    
-                    
-                    
-//                    Text("\(photoInfo.groupName)")
-//                        .font(.subheadline)
-//                        .padding(.bottom, 5)
+                    if photoInfo.place != " " && photoInfo.place != "" {
+                        Text("\(photoInfo.place)에서 \(photoInfo.groupName)")
+                            .font(.subheadline)
+                            .padding(.bottom, 5)
+                    }
 
                     
                     HStack{
